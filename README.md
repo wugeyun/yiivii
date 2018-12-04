@@ -1,4 +1,4 @@
-* 标题：
+* 项目标题：
     * 伊娃备忘录
     * yiivii
 
@@ -7,4 +7,5 @@
     * 无后台的即时内容更新页面
 
 * 技术：
+
     Thinkphp5.1 + Bootstrap v3 + ZUI + jQuery
