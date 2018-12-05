@@ -9,3 +9,7 @@
 * 技术要点：
 
     Thinkphp5.1 + Bootstrap v3 + ZUI + jQuery
+
+* 演示地址
+
+    www.yiivii.com
