@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "12077e4cc1d09bf12a73d49f5069a231",
@@ -74,16 +74,16 @@
         },
         {
             "name": "topthink/framework",
-            "version": "v5.1.30",
+            "version": "v5.1.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "4fefa5ed2f9dc8a15fcf7bb271d0d918fb48dacc"
+                "reference": "83333bbeb10fdbf2996be89f5367ad41c48fa02e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/framework/zipball/4fefa5ed2f9dc8a15fcf7bb271d0d918fb48dacc",
-                "reference": "4fefa5ed2f9dc8a15fcf7bb271d0d918fb48dacc",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/83333bbeb10fdbf2996be89f5367ad41c48fa02e",
+                "reference": "83333bbeb10fdbf2996be89f5367ad41c48fa02e",
                 "shasum": ""
             },
             "require": {
@@ -121,7 +121,7 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2018-11-30T07:46:23+00:00"
+            "time": "2018-12-11T03:55:34+00:00"
         },
         {
             "name": "topthink/think-installer",
