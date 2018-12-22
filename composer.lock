@@ -78,12 +78,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "83333bbeb10fdbf2996be89f5367ad41c48fa02e"
+                "reference": "adde39c236cfeda454fe725d999d89abf67b8caf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/framework/zipball/83333bbeb10fdbf2996be89f5367ad41c48fa02e",
-                "reference": "83333bbeb10fdbf2996be89f5367ad41c48fa02e",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/adde39c236cfeda454fe725d999d89abf67b8caf",
+                "reference": "adde39c236cfeda454fe725d999d89abf67b8caf",
                 "shasum": ""
             },
             "require": {
