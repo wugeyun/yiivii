@@ -9,7 +9,8 @@
 
 * 技术要点：
 
-    Thinkphp5.1 + Bootstrap v3 + ZUI + jQuery
+    * Thinkphp5.1 + Bootstrap v3 + ZUI + jQuery；
+    * 无密码登录，邮箱即账户，随机验证码登录；
 
 * 官网地址
 
