@@ -1,9 +1,108 @@
 {extend name="public:base" /}
 {block name="content"}
 <div class="container">
-    <div class="col-md 12">
-        <h1>welcome</h1>
-        {:date('Y-m-d H:i:s')}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="header-dividing">你是否经常这样：</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <h3>交易前的心情 <i class="icon icon-smile"></i></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>交易后的心情 <i class="icon icon-frown"></i></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="text-red"><i class="icon icon-quote-left icon-2x"></i> Fuck ! 这不是我想要的 ... <i class="icon icon-chat-dot icon-2x"></i></h2>
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="header-dividing">成功交易，或许你需要：</h2>
+                </div>
+                <div class="col-md-12">
+                    <ul>
+                        <li>认真对待每一笔交易</li>
+                        <li>以最简洁的方式记录日常交易得失</li>
+                        <li>让每一笔交易都能成为盈利道路的垫脚石</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="header-dividing">伊娃交易日志系统 功能：</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <h3>记录入场时间 <i class="icon icon-time"></i></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <h3>记录入场点位 <i class="icon icon-line-chart"></i></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <h3>填写入场理由 <i class="icon icon-tint"></i></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>持仓时间 <i class="icon icon-time"></i></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>盈亏金额 <i class="icon icon-dollar"></i></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>订单小结 <i class="icon icon-coffee"></i></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="text-red">坚持总结记录 <i class="icon icon-spin icon-refresh icon-2x"></i></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 class="text-red"><a href="{:url('/')}" class="btn btn-danger">立即登记</a> &nbsp; 现在就开始锻造你的私人成功密码 <i class="icon icon-key"></i></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-heading">最新订单 <i class="icon icon-spin icon-spinner-snake"></i></div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+            <div class="panel my-pin">
+                <div class="panel-heading">他们在用 <i class="icon icon-user"></i></div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {/block}

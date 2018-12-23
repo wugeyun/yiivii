@@ -14,6 +14,10 @@
     <script src="/dist/lib/ieonly/respond.js"></script>
     <script src="/dist/lib/ieonly/excanvas.js"></script>
     <![endif]-->
+    <style>
+        .my-mt20 {margin-top: 20px;}
+        .my-pt20 {padding-top: 20px;}
+    </style>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -31,23 +35,38 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- 品牌名称或logo -->
-            <a class="navbar-brand" href="{:url('/')}">伊娃</a>
+            <a class="navbar-brand" href="{:url('/')}"><i class="icon icon-home"></i> 伊娃</a>
         </div>
         <!-- 导航项目 -->
         <div class="collapse navbar-collapse navbar-collapse-top">
             <!-- 一般导航项目 -->
             <ul class="nav navbar-nav">
-                <li><a href="{:url('member/index')}">公开列表</a></li>
+                <li><a href="{:url('/')}">会员列表</a></li>
                 <li><a href="{:url('/')}">如何使用</a></li>
             </ul>
             <!-- 右侧的导航项目 -->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{:url('/')}">登录</a></li>
+                <li><a href="{:url('/')}">登录 <i class="icon icon-signin"></i></a></li>
             </ul>
         </div><!-- END .navbar-collapse -->
     </div>
 </nav>
 {block name="content"}{/block}
-{load href="/dist/lib/jquery/jquery.js,/dist/js/zui.min.js" /}
+<div class="container-fluid bg-black my-mt20">
+    <div class="row">
+        <div class="col-md-12 text-center my-pt20">
+            <p class="with-padding">本程序已加入 <a href="https://github.com/hswddan/yiivii" class="text-muted" target="_blank">gitHub</a> 开源平台，可以免授权使用</p>
+            <p class="with-padding">&#169; {:date('Y')} <a href="http://wugemang.com" class="text-muted" target="_blank">武哥很忙</a> 出品</p>
+        </div>
+    </div>
+</div>
+{load href="/dist/lib/jquery/jquery.js,/dist/js/zui.min.js,/dist/js/jquery.pin.js,/dist/js/jquery.lazyload.min.js" /}
+<script>
+    //pin
+    $(".my-pin").pin({minWidth: 768});
+    //加载img
+    $("img.lazy").lazyload({effect: "fadeIn"});
+</script>
+{block name="script"}{/block}
 </body>
 </html>
