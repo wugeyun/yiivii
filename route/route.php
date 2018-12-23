@@ -12,7 +12,8 @@
 Route::get('think', function () {
     return 'hello,ThinkPHP5!';
 });
-
+//首页
+Route::get('/', 'index/index');
 Route::get('hello/:name', 'index/hello');
 
 return [
