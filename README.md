@@ -12,6 +12,6 @@
     * Thinkphp5.1 + Bootstrap v3 + ZUI + jQuery；
     * 无密码登录，邮箱即账户，随机验证码登录；
 
-* 官网地址
+* 官网地址:
 
     https://www.yiivii.com
