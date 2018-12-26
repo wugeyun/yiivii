@@ -10,3 +10,12 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+/**
+ * 随机boostrap颜色
+ * @return mixed
+ */
+function get_color(){
+    $data = ['default','primary','success','info','warning','danger'];
+    $key = array_rand($data,1);
+    return $data[$key];
+}
