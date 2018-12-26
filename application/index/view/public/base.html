@@ -11,9 +11,7 @@
     <meta name="description" content="伊娃交易日志，外汇黄金股指,交易员作手回忆录，交易成功路上的好伙伴。">
     {load href="/dist/css/zui.min.css,/dist/css/zui-theme-black.css" /}
     <!--[if lt IE 9]>
-    <script src="/dist/lib/ieonly/html5shiv.js"></script>
-    <script src="/dist/lib/ieonly/respond.js"></script>
-    <script src="/dist/lib/ieonly/excanvas.js"></script>
+    {load href="/dist/lib/ieonly/html5shiv.js,/dist/lib/ieonly/respond.js,/dist/lib/ieonly/excanvas.js" /}
     <![endif]-->
     <style>
         .my-mt20 {margin-top: 20px;}
@@ -61,8 +59,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery"></script>
-{load href="/dist/js/zui.min.js,/dist/js/jquery.pin.js,/dist/js/jquery.lazyload.min.js" /}
+{load href="/dist/lib/jquery/jquery.js,/dist/js/zui.min.js,/dist/js/jquery.pin.js,/dist/js/jquery.lazyload.min.js" /}
 <script>
     //pin
     $(".my-pin").pin({minWidth: 768});
