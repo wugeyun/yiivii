@@ -9,7 +9,7 @@
     <meta name="robots" content="index,follow">
     <meta name="keywords" content="伊娃交易日志,外汇,黄金,股指,交易员作手回忆录">
     <meta name="description" content="伊娃交易日志，外汇黄金股指,交易员作手回忆录，交易成功路上的好伙伴。">
-    {load href="/dist/css/zui.min.css,/dist/css/zui-theme-black.css" /}
+    {load href="/dist/css/zui.min.css,/dist/css/zui-theme-black.css,/dist/lib/bootbox/bootbox.min.css" /}
     <!--[if lt IE 9]>
     {load href="/dist/lib/ieonly/html5shiv.js,/dist/lib/ieonly/respond.js,/dist/lib/ieonly/excanvas.js" /}
     <![endif]-->
@@ -46,7 +46,7 @@
             </ul>
             <!-- 右侧的导航项目 -->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{:url('/')}">登录 <i class="icon icon-signin"></i></a></li>
+                <li><a href="javascript:;" data-remote="{:url('login/index')}" data-icon="signin" data-title="注册/登录" data-toggle="modal">登录 <i class="icon icon-signin"></i></a></li>
             </ul>
         </div><!-- END .navbar-collapse -->
     </div>
@@ -60,12 +60,18 @@
         </div>
     </div>
 </div>
-{load href="/dist/lib/jquery/jquery.js,/dist/js/zui.min.js,/dist/js/jquery.pin.js,/dist/js/jquery.lazyload.min.js" /}
+{load href="/dist/lib/jquery/jquery.js,/dist/js/zui.min.js,/dist/lib/bootbox/bootbox.min.js,/dist/js/jquery.lazyload.min.js" /}
 <script>
-    //pin
-    $(".my-pin").pin({minWidth: 768});
     //加载img
     $("img.lazy").lazyload({effect: "fadeIn"});
+    //login
+    bootbox.prompt({
+        title: "This is a prompt with an email input!",
+        inputType: 'email',
+        callback: function (result) {
+            console.log(result);
+        }
+    });
 </script>
 {block name="script"}{/block}
 </body>

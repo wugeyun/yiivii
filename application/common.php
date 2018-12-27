@@ -11,7 +11,7 @@
 
 // 应用公共文件
 /**
- * 随机boostrap颜色
+ * 随机boostrap状态
  * @return mixed
  */
 function get_color(){
