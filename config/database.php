@@ -19,7 +19,7 @@ return [
     // 用户名
     'username'        => 'yiivii',
     // 密码
-    'password'        => 'LkSPi4sdXCRfxmce',
+    'password'        => '',
     // 端口
     'hostport'        => '',
     // 连接dsn
