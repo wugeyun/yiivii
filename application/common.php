@@ -57,7 +57,7 @@ function setEmailContent($base_content = '邮件正文内容...',$title = '伊�
  * $title 邮件标题
  * $content 邮件内容
  */
-function sendMail($title, $content = '',$to = 'hswddan@qq.com',$title = '伊娃系统通知'){
+function sendMail($content = '',$to = 'hswddan@qq.com',$title = '伊娃系统通知'){
     //邮件设置
     $mail = new \PHPMailer\PHPMailer\PHPMailer;
     try {
