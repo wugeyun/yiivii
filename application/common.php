@@ -66,29 +66,29 @@ function sendMail($to, $title, $content = ''){
     $mail = new \PHPMailer\PHPMailer\PHPMailer;
     try {
         // 服务器设置
-        //$mail->SMTPDebug = 2;                            // 开启Debug
-        $mail->isSMTP();                                   // 使用SMTP
-        $mail->SMTPAuth = true;                            // 开启SMTP验证
-        $mail->SMTPSecure = 'ssl';                          // 开启TLS 可选
-        $mail->Host = 'smtp.exmail.qq.com';                       // 服务器地址 smtp.exmail.qq.com
-        $mail->Username = 'system@yiivii.com';                 // SMTP 用户名
-        $mail->Password = 'p5QZdq3MF3bPzhA8';              // SMTP 密码
-        $mail->Port = 465;                                    // 端口
-        $mail->setFrom('system@yiivii.com', '伊娃系统通知');            // 来自
-        $mail->addReplyTo('system@yiivii.com', '收件人');        // 回复地址
+        //$mail->SMTPDebug = 2;     // 开启Debug
+        $mail->isSMTP();        // 使用SMTP
+        $mail->SMTPAuth = true;     // 开启SMTP验证
+        $mail->SMTPSecure = 'ssl';      // 开启TLS 可选
+        $mail->Host = 'smtp.exmail.qq.com';     // 服务器地址 smtp.exmail.qq.com
+        $mail->Username = config('email.Username');     // SMTP 用户名
+        $mail->Password = config('email.Password');     // SMTP 密码
+        $mail->Port = 465;      // 端口
+        $mail->setFrom('system@yiivii.com', '伊娃系统通知');      // 来自
+        $mail->addReplyTo('system@yiivii.com', '收件人');      // 回复地址
         $mail->addAddress($to);
-        //$mail->addAddress($to);                        // 可以只传邮箱地址
-        //$mail->ConfirmReadingTo = 'hswddan@qq.com'; //回执
+        //$mail->addAddress($to);       // 可以只传邮箱地址
+        //$mail->ConfirmReadingTo = 'hswddan@qq.com';       //回执
         // $mail->addCC('cc@example.com');
         // $mail->addBCC('bcc@example.com');
         // 附件
-        //$mail->addAttachment('/var/tmp/file.tar.gz');                // 添加附件
-        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');            // 可以设定名字
+        //$mail->addAttachment('/var/tmp/file.tar.gz');     // 添加附件
+        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');        // 可以设定名字
         // 内容
-        $mail->isHTML(true);                                    // 设置邮件格式为HTML
+        $mail->isHTML(true);        // 设置邮件格式为HTML
         $mail->Subject = $title;
         $mail->Body    = $content;
-        $mail->AltBody = '收件人(https://www.yiivii.com)';   //邮件正文不支持HTML的备用显示
+        $mail->AltBody = '收件人(https://www.yiivii.com)';     //邮件正文不支持HTML的备用显示
         $mail->send();
     } catch (Exception $e) {
 

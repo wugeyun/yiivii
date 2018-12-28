@@ -64,32 +64,6 @@
 <script>
     //加载img
     $("img.lazy").lazyload({effect: "fadeIn"});
-    //login
-    $('.get-login').on('click', function (){
-        bootbox.prompt({
-            title: "请输入Email注册或者登陆",
-            inputType: 'email',
-            callback: function (email) {
-                if(email){
-                    $.post("{:url('login/email')}",{email:email},function(data){
-                        if(data.code == 500){
-                            bootbox.prompt({
-                                title: "请填写邮箱收到的登陆码",
-                                inputType: 'number',
-                                callback: function (result) {
-                                    console.log(result);
-                                }
-                            });
-                        }else{
-
-                        }
-                    });
-                }else{
-                    alert('请填写Email');
-                }
-            }
-        });
-    });
 </script>
 {block name="script"}{/block}
 </body>
