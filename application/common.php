@@ -26,9 +26,7 @@ function get_color(){
  * $from 正文底部来源
  * $base_content 正文内容
  */
-function setEmailContent($title, $from, $base_content = '邮件正文内容...'){
-    $title ? $title :$title = '伊娃交易登陆码';
-    $from ? $from :$from = '系统消息';
+function setEmailContent($base_content = '邮件正文内容...',$title = '伊娃交易登陆码',$from = 'www.yiivii.com'){
     $content = '<table border="0" width="100%" cellspacing="0" cellpadding="0" style="background-color:#f7f9fa;padding-top:20px;padding-bottom:30px;">';
     $content .= '<tr>';
     $content .= '<td align="center" style="background-color: #F7F9FA" width="100%">';
@@ -44,7 +42,7 @@ function setEmailContent($title, $from, $base_content = '邮件正文内容...')
     $content .= '<tr>';
     $content .= '<td style="padding:25px 25px 35px 25px;background-color:#f7f7f7;">';
     $content .= '<p>来源【'.$from.'】';
-    $content .= '<p style="text-align:right;">发送时间【'.date('Y-m-d H:i:s',time()).'】</p>';
+    $content .= '<p style="text-align:right;">发送时间【'.date('Y-m-d H:i:s').'】</p>';
     $content .= '</td>';
     $content .= '</tr>';
     $content .= '</table>';
@@ -59,9 +57,7 @@ function setEmailContent($title, $from, $base_content = '邮件正文内容...')
  * $title 邮件标题
  * $content 邮件内容
  */
-function sendMail($to, $title, $content = ''){
-    $to ? $to : $to = 'hswddan@qq.com';
-    $title ? $title : $title = '伊娃系统通知';
+function sendMail($title, $content = '',$to = 'hswddan@qq.com',$title = '伊娃系统通知'){
     //邮件设置
     $mail = new \PHPMailer\PHPMailer\PHPMailer;
     try {
