@@ -7,9 +7,7 @@ class Login extends Controller {
     }
     //验证email
     public function email() {
-        $data = [];
         $data['code'] = 200;
-        $data['str'] = '';
         $email = trim(input('email'));
         if($email){
             cookie('loginemail',$email,3600*24*90);
@@ -70,7 +68,8 @@ class Login extends Controller {
         return json($data);
     }
     public function dologin() {
-
+        $data['code'] = 200;
+        return json($data);
         //return view('');
     }
 }

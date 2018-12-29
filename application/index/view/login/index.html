@@ -28,6 +28,9 @@
                                     if(number){
                                         var reg = /^\d{4}$/;
                                         if(!reg.test(number)){
+                                            //哈哈哈，没通过
+                                            alert("请输入邮箱收到的4位验证码!");
+                                        }else{
                                             $.post("{:url('login/dologin')}",{number:number},function(data){
                                                 alert('下班了，，先写到这里');
                                             });
