@@ -1,6 +1,8 @@
 <script>
     //删除自带模态框
     $("#triggerModal,.modal-backdrop").remove();
+    //漂浮消息
+    var myMessager = new $.zui.Messager({icon:'warning-sign',type:'warning',placement:'top-right'});
     bootbox.prompt({
         title: "请输入Email注册或者登陆",
         inputType: 'email',
@@ -12,11 +14,7 @@
                 //我要开始验证啦
                 if(!reg.test(email)){
                     //哈哈哈，没通过
-                    $.zui.Messager('邮箱格式不正确!', {
-                        icon: 'warning-sign',
-                        type: 'warning',
-                        placement: 'top-right'
-                    }).show();
+                    myMessager.show('邮箱格式不正确!');
                     return false;
                 }else{
                     //666，邮箱验证通过，提交后台
@@ -32,11 +30,7 @@
                                     if(number){
                                         var reg = /^\d{4}$/;
                                         if(!reg.test(number)){
-                                            $.zui.Messager('请输入邮箱收到的4位验证码!', {
-                                                icon: 'warning-sign',
-                                                type: 'warning',
-                                                placement: 'top-right'
-                                            }).show();
+                                            myMessager.show('请输入邮箱收到的4位验证码!');
                                             return false;
                                         }else{
                                             $.post("{:url('login/dologin')}",{number:number},function(data){
@@ -44,11 +38,7 @@
                                             });
                                         }
                                     }else{
-                                        $.zui.Messager('请输入邮箱收到的4位验证码!', {
-                                            icon: 'warning-sign',
-                                            type: 'warning',
-                                            placement: 'top-right'
-                                        }).show();
+                                        myMessager.show('请输入邮箱收到的4位验证码!');
                                         return false;
                                     }
                                 }
@@ -60,11 +50,7 @@
                     return true;
                 }
             }else{
-                $.zui.Messager('Email为空!', {
-                    icon: 'warning-sign',
-                    type: 'warning',
-                    placement: 'top-right'
-                }).show();
+                myMessager.show('Email为空!');
                 return false;
             }
         }
