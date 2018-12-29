@@ -1,24 +1,52 @@
 <script>
+    //删除自带模态框
+    $("#triggerModal,.modal-backdrop").remove();
     bootbox.prompt({
         title: "请输入Email注册或者登陆",
         inputType: 'email',
         callback: function (email) {
+            //邮箱空值验证
             if(email){
-                $.post("{:url('login/email')}",{email:email},function(data){
-                    if(data.code == 500){
-                        bootbox.prompt({
-                            title: "请填写邮箱收到的登陆码",
-                            inputType: 'number',
-                            callback: function (result) {
-                                console.log(result);
-                            }
-                        });
-                    }else{
+                //定义邮箱正则
+                var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                //我要开始验证啦
+                if(!reg.test(email)){
+                    //哈哈哈，没通过
+                    alert("邮箱格式不正确!");
+                    return false;
+                }else{
+                    //666，邮箱验证通过，提交后台
+                    $.post("{:url('login/email')}",{email:email},function(data){
+                        //查看你都干了些什么
+                        if(data.code == 500){
+                            //一切顺利，弹出验证码输入框
+                            bootbox.prompt({
+                                title: "请填写邮箱收到的登陆码",
+                                inputType: 'number',
+                                callback: function (number) {
+                                    //验证码规则
+                                    if(number){
+                                        var reg = /^\d{4}$/;
+                                        if(!reg.test(number)){
+                                            $.post("{:url('login/dologin')}",{number:number},function(data){
+                                                alert('下班了，，先写到这里');
+                                            });
+                                        }
+                                    }else{
+                                        alert('请输入邮箱收到的4位验证码');
+                                        return false;
+                                    }
+                                }
+                            });
+                        }else{
 
-                    }
-                });
+                        }
+                    });
+                    return true;
+                }
             }else{
-                alert('请填写Email');
+                alert('Email为空');
+                return false;
             }
         }
     });

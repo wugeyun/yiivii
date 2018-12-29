@@ -13,6 +13,8 @@ class Login extends Controller {
         $email = trim(input('email'));
         if($email){
             cookie('loginemail',$email,3600*24*90);
+            $data['code'] = 500;
+            /*
             $isEmail = $model::get(['email'=>$email]);
             if($isEmail){
                 //判断生成登录码
@@ -63,10 +65,12 @@ class Login extends Controller {
                 $data['str'] .= '})();';
                 $data['str'] .= '</script>';
             }
+        */
         }
         return json($data);
     }
     public function dologin() {
+
         //return view('');
     }
 }
