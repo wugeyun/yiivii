@@ -24,11 +24,10 @@
                                 title: "请填写邮箱收到的登陆码",
                                 inputType: 'number',
                                 callback: function (number) {
-                                    //验证码规则
+                                    //验证码规则验证
                                     if(number){
                                         var reg = /^\d{4}$/;
                                         if(!reg.test(number)){
-                                            //哈哈哈，没通过
                                             alert("请输入邮箱收到的4位验证码!");
                                         }else{
                                             $.post("{:url('login/dologin')}",{number:number},function(data){
