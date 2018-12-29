@@ -34,7 +34,7 @@
                                             return false;
                                         }else{
                                             $.post("{:url('login/dologin')}",{number:number},function(data){
-                                                alert(data.code);
+                                                myMessager.show(data.code);
                                             });
                                         }
                                     }else{
