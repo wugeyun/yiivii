@@ -12,7 +12,11 @@
                 //我要开始验证啦
                 if(!reg.test(email)){
                     //哈哈哈，没通过
-                    alert("邮箱格式不正确!");
+                    $.zui.Messager('邮箱格式不正确!', {
+                        icon: 'warning-sign',
+                        type: 'warning',
+                        placement: 'top-right'
+                    }).show();
                     return false;
                 }else{
                     //666，邮箱验证通过，提交后台
@@ -28,14 +32,23 @@
                                     if(number){
                                         var reg = /^\d{4}$/;
                                         if(!reg.test(number)){
-                                            alert("请输入邮箱收到的4位验证码!");
+                                            $.zui.Messager('请输入邮箱收到的4位验证码!', {
+                                                icon: 'warning-sign',
+                                                type: 'warning',
+                                                placement: 'top-right'
+                                            }).show();
+                                            return false;
                                         }else{
                                             $.post("{:url('login/dologin')}",{number:number},function(data){
                                                 alert(data.code);
                                             });
                                         }
                                     }else{
-                                        alert('请输入邮箱收到的4位验证码');
+                                        $.zui.Messager('请输入邮箱收到的4位验证码!', {
+                                            icon: 'warning-sign',
+                                            type: 'warning',
+                                            placement: 'top-right'
+                                        }).show();
                                         return false;
                                     }
                                 }
@@ -47,7 +60,11 @@
                     return true;
                 }
             }else{
-                alert('Email为空');
+                $.zui.Messager('Email为空!', {
+                    icon: 'warning-sign',
+                    type: 'warning',
+                    placement: 'top-right'
+                }).show();
                 return false;
             }
         }
