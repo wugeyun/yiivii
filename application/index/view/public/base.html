@@ -46,10 +46,10 @@
             </ul>
             <!-- 右侧的导航项目 -->
             <ul class="nav navbar-nav navbar-right">
-                {eq name="Think.session.status" value="1000"}
-                <li><a href="javascript:;" data-remote="{:url('login/index')}" data-show-header="false" data-toggle="modal" data-backdrop="false">登录 <i class="icon icon-signin"></i></a></li>
-                {else}
+                {eq name="Think.session.status" value="1001"}
                 <li><a href="{:url('login/loginout')}">退出 <i class="icon icon-signout"></i></a></li>
+                {else}
+                <li><a href="javascript:;" data-remote="{:url('login/index')}" data-show-header="false" data-toggle="modal" data-backdrop="false">登录 <i class="icon icon-signin"></i></a></li>
                 {/eq}
             </ul>
         </div><!-- END .navbar-collapse -->
