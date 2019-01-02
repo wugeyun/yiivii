@@ -64,7 +64,6 @@ class Login extends Controller {
             }
         }
         return json($data);
-        //return view('');
     }
 
     /**
