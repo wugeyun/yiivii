@@ -51,7 +51,9 @@ class Login extends Controller {
         $data['code'] = 500;
         if ($salt > 0){
             $time = time() - 300;
-            $info = Member::get(['salt'=>$salt,'lastget'=>['>',$time]]);
+            $info = Member::where('salt',$salt)
+            ->where('lastget','>',$time)
+            ->find();
             if(!empty($info)){
                 //写入cookie
                 cookie('email',$info['email'],3600*24*90);
