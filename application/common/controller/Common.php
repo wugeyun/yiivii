@@ -15,14 +15,10 @@ class Common extends Controller {
         $email = cookie('email');
         $user = Member::get(['email'=>$email]);
         //判断用户
-        if(empty($user)){
-            Member::create(['email' => $email]);
+        if(!empty($user)){
+            //Member::create(['email' => $email]);
             session('email',$email);
-            session('status',1002);
-        }else{
-            session('status',1001);
-            session('email',$user['email']);
-            session('nikename',$user['nikename']);
+            $user['nikename'] == '' ? session('status',1002) : session('status',1001);
         }
 
     }
