@@ -16,15 +16,14 @@ class Login extends Controller {
         $email = trim($email);
         if($email){
             $data['code'] = 500;
-            $member = new Member;
-            $isEmail = $member::get(['email'=>$email]);
+            $isEmail = Member::get(['email'=>$email]);
             if($isEmail){
                 //判断生成登录码
                 for($i=1;$i<100;$i++){
                     $salt = rand(1111,9999);
                     $wait = time() - $isEmail['lastget'];
                     if($wait > 300){
-                        $member->save(['salt'=>$salt,'lastget'=>time()],['email'=>$email]);
+                        Member::where('email',$email)->update(['salt'=>$salt,'lastget'=>time()]);
                         $wait = 300;
                         $mail_content = '<p>登 录 码【'.$salt.'】</p>';
                         break;
