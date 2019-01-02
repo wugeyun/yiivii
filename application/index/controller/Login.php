@@ -61,6 +61,8 @@ class Login extends Controller {
                 $info->lastget = '';
                 $info->save();
                 $data['code'] = 200;
+            }else{
+                $data['code'] = 300;
             }
         }
         return json($data);
