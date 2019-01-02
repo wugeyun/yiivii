@@ -46,7 +46,11 @@
             </ul>
             <!-- 右侧的导航项目 -->
             <ul class="nav navbar-nav navbar-right">
+                {eq name="Think.session.status" value="1000"}
                 <li><a href="javascript:;" data-remote="{:url('login/index')}" data-show-header="false" data-toggle="modal" data-backdrop="false">登录 <i class="icon icon-signin"></i></a></li>
+                {else}
+                <li><a href="{:url('login/loginout')}">退出 <i class="icon icon-signout"></i></a></li>
+                {/eq}
             </ul>
         </div><!-- END .navbar-collapse -->
     </div>
@@ -64,6 +68,18 @@
 <script>
     //加载img
     $("img.lazy").lazyload({effect: "fadeIn"});
+    {eq name="Think.session.status" value="1002"}
+        bootbox.prompt({
+            title: "请设置用户名",
+            inputType: 'text',
+            callback: function (name) {
+                if(name == '') return false;
+                $.post("{:url('member/setuser')}",{nikename:name},function(){
+                    return true;
+                });
+            }
+        });
+    {/eq}
 </script>
 {block name="script"}{/block}
 </body>

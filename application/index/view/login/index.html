@@ -1,6 +1,6 @@
 <script>
     //删除自带模态框
-    //$("#triggerModal").remove();
+    $("#triggerModal").remove();
     //漂浮消息
     var myMessager = new $.zui.Messager({icon:'warning-sign',type:'danger',placement:'center'});
     bootbox.prompt({
@@ -30,21 +30,26 @@
                                     if(number){
                                         var reg = /^\d{4}$/;
                                         if(!reg.test(number)){
-                                            myMessager.show('请输入邮箱收到的4位验证码!');
+                                            myMessager.show('登陆码格式不正确!');
                                             return false;
                                         }else{
                                             $.post("{:url('login/dologin')}",{number:number},function(data){
-                                                myMessager.show(data.code);
+                                                if(data.code == 500){
+                                                    myMessager.show('登陆成功');
+                                                }else{
+                                                    myMessager.show('登陆失败');
+                                                }
+
                                             });
                                         }
                                     }else{
-                                        myMessager.show('请输入邮箱收到的4位验证码!');
+                                        myMessager.show('请输入邮箱收到的登陆码!');
                                         return false;
                                     }
                                 }
                             });
                         }else{
-
+                            return false;
                         }
                     });
                     return true;
