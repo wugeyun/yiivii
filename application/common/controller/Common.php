@@ -13,10 +13,9 @@ class Common extends Controller {
         session('?status') ? '' : session('status',1000);
         //读取cookie
         $email = cookie('email');
-        $user = Member::get(['email'=>$email]);
+        session('status') == 1000 ? '' : $user = Member::get(['email'=>$email]);
         //判断用户
         if(!empty($user)){
-            //Member::create(['email' => $email]);
             session('email',$email);
             $user['nikename'] == '' ? session('status',1002) : session('status',1001);
         }
