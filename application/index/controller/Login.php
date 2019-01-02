@@ -24,7 +24,7 @@ class Login extends Controller {
             //判断生成登录码
             for($i=1;$i<100;$i++){
                 $salt = rand(1111,9999);
-                $wait = time() - $user->lastget];
+                $wait = time() - $user->lastget;
                 if($wait > 300){
                     Member::where('email',$email)->update(['salt'=>$salt,'lastget'=>time()]);
                     $wait = 300;
