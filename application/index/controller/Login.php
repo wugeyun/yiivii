@@ -16,7 +16,7 @@ class Login extends Controller {
         $email = trim($email);
         if($email){
             $data['code'] = 500;
-            $user = Member::where('email',$email)->findOrEmpty();
+            $user = Member::get(['email' => $email]);
             if(empty($user)){
                 $user = Member::create(['email' => $email]);
             }
