@@ -20,7 +20,7 @@
                     //666，邮箱验证通过，提交后台
                     $.post("{:url('login/email')}",{email:email},function(data){
                         //查看你都干了些什么
-                        if(data.code == 500){
+                        if(data.code == 200){
                             //一切顺利，弹出验证码输入框
                             bootbox.prompt({
                                 title: "请填写邮箱收到的登陆码",
@@ -34,7 +34,7 @@
                                             return false;
                                         }else{
                                             $.post("{:url('login/dologin')}",{salt:number},function(data){
-                                                if(data.code == 500){
+                                                if(data.code == 200){
                                                     myMessager.show('登陆成功');
                                                 }else{
                                                     myMessager.show('登陆失败');

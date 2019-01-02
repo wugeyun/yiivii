@@ -12,10 +12,10 @@ class Login extends Controller {
      * 验证email
      */
     public function email($email) {
-        $data['code'] = 200;
+        $data['code'] = 500;
         $email = trim($email);
         if($email){
-            $data['code'] = 500;
+            $data['code'] = 200;
             $user = Member::get(['email' => $email]);
             if(empty($user)){
                 $user = Member::create(['email' => $email]);
@@ -48,7 +48,7 @@ class Login extends Controller {
      * @return mixed
      */
     public function dologin($salt) {
-        $data['code'] = 200;
+        $data['code'] = 500;
         if ($salt != '' && $salt > 0){
             $time = time() - 300;
             $info = Member::get(['salt'=>$salt,'lastget'=>['>',$time]]);
@@ -60,7 +60,7 @@ class Login extends Controller {
                 $info->lastlogin = time();
                 $info->lastget = '';
                 $info->save();
-                $data['code'] = 500;
+                $data['code'] = 200;
             }
         }
         return json($data);
