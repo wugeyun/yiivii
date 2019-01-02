@@ -18,8 +18,7 @@ class Login extends Controller {
             $data['code'] = 500;
             $user = Member::where('email',$email)->findOrEmpty();
             if(empty($user)){
-                $user->email = $email;
-                $user->save();
+                $user = Member::create(['email' => $email]);
             }
             //判断生成登录码
             for($i=1;$i<100;$i++){
