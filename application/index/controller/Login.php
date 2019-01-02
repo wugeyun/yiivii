@@ -49,7 +49,7 @@ class Login extends Controller {
      */
     public function dologin($salt) {
         $data['code'] = 500;
-        if ($salt != '' && $salt > 0){
+        if ($salt > 0){
             $time = time() - 300;
             $info = Member::get(['salt'=>$salt,'lastget'=>['>',$time]]);
             if(!empty($info)){
