@@ -33,11 +33,12 @@
                                             myMessager.show('登陆码格式不正确!');
                                             return false;
                                         }else{
-                                            $.post("{:url('login/dologin')}",{number:number},function(data){
+                                            $.post("{:url('login/dologin')}",{salt:number},function(data){
                                                 if(data.code == 500){
                                                     myMessager.show('登陆成功');
                                                 }else{
                                                     myMessager.show('登陆失败');
+                                                    return false;
                                                 }
 
                                             });
