@@ -36,7 +36,7 @@ class Login extends Controller {
             }
             //邮件发送登录码
             $mail_content .= '<p>有效时间【'.$wait.' 秒】</p>';
-            $mail_content .= '<p>登录地址 <a href="'.url('/').'">'.url('/').'</a></p>';
+            $mail_content .= '<p>登录地址 <a href="https://www.yiivii.com">www.yiivii.com</a></p>';
             $this_content = setEmailContent($mail_content,$title = '伊娃系统通知');
             sendMail($this_content,$email);
         }
