@@ -22,30 +22,30 @@ class Login extends Controller {
             ]);
             if ($validate->check(['email'=>$email])) {
                 $data['code'] = 200;
-            }
-            //开始查询数据库
-            $user = Member::get(['email' => $email]);
-            if(empty($user)){
-                $user = Member::create(['email' => $email]);
-            }
-            //判断生成登录码
-            for($i=1;$i<100;$i++){
-                $salt = rand(1111,9999);
-                $wait = time() - $user->lastget;
-                if($wait > 300){
-                    Member::where('email',$email)->update(['salt'=>$salt,'lastget'=>time()]);
-                    $wait = 300;
-                    $mail_content = '<p>登 录 码【'.$salt.'】</p>';
-                    break;
-                }else{
-                    $wait = 300 - $wait;
-                    $mail_content = '<p>登 录 码【'.$user->salt.'】</p>';
+                //开始查询数据库
+                $user = Member::get(['email' => $email]);
+                if(empty($user)){
+                    $user = Member::create(['email' => $email]);
                 }
+                //判断生成登录码
+                for($i=1;$i<100;$i++){
+                    $salt = rand(1111,9999);
+                    $wait = time() - $user->lastget;
+                    if($wait > 300){
+                        Member::where('email',$email)->update(['salt'=>$salt,'lastget'=>time()]);
+                        $wait = 300;
+                        $mail_content = '<p>登 录 码【'.$salt.'】</p>';
+                        break;
+                    }else{
+                        $wait = 300 - $wait;
+                        $mail_content = '<p>登 录 码【'.$user->salt.'】</p>';
+                    }
+                }
+                //邮件发送登录码
+                $mail_content .= '<p>有效时间【'.$wait.' 秒】</p>';
+                $this_content = setEmailContent($mail_content,$title = '伊娃系统登陆码');
+                sendMail($this_content,$email);
             }
-            //邮件发送登录码
-            $mail_content .= '<p>有效时间【'.$wait.' 秒】</p>';
-            $this_content = setEmailContent($mail_content,$title = '伊娃系统登陆码');
-            sendMail($this_content,$email);
         }
         return json($data);
     }
