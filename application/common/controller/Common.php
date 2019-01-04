@@ -13,7 +13,7 @@ class Common extends Controller {
         session('?status') ? '' : session('status',1000);
         //读取cookie
         $email = cookie('email');
-        !empty($email) ? $user = Member::get(['email'=>$email]) : cookie('email',null);
+        (!empty($email) && session('status') != 1001) ? $user = Member::get(['email'=>$email]) : cookie('email',null);
         //判断用户
         if(!empty($user)){
             session('email',$email);
