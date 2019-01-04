@@ -17,12 +17,13 @@ class Login extends Controller {
         $email = trim($email);
         if($email){
             //验证数据
-            $result = Validate::make()
-                ->rule(['email' => ValidateRule::email()])
-                ->check(['email'=>$email]);
-            if($result){
+            $validate = Validate::make([
+                'email' => 'email'
+            ]);
+            if ($validate->check(['email'=>$email])) {
                 $data['code'] = 200;
             }
+            //开始查询数据库
             $user = Member::get(['email' => $email]);
             if(empty($user)){
                 $user = Member::create(['email' => $email]);
