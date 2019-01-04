@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
+use think\Validate;
 use app\common\model\Member;
 class Login extends Controller {
     public function index() {
