@@ -56,6 +56,7 @@ class Login extends Controller {
      */
     public function dologin($salt) {
         $data['code'] = 500;
+        $salt = intval($salt);
         if (is_int($salt + 0) && $salt > 0){
             $time = time() - 300;
             $info = Member::where('salt',$salt)
