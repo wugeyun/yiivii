@@ -15,7 +15,13 @@ class Login extends Controller {
         $data['code'] = 500;
         $email = trim($email);
         if($email){
-            $data['code'] = 200;
+            //验证数据
+            $result = Validate::make()
+                ->rule(['email' => ValidateRule::email()])
+                ->check(['email'=>$email]);
+            if($result){
+                $data['code'] = 200;
+            }
             $user = Member::get(['email' => $email]);
             if(empty($user)){
                 $user = Member::create(['email' => $email]);
@@ -36,8 +42,7 @@ class Login extends Controller {
             }
             //邮件发送登录码
             $mail_content .= '<p>有效时间【'.$wait.' 秒】</p>';
-            $mail_content .= '<p>登录地址 <a href="https://www.yiivii.com">www.yiivii.com</a></p>';
-            $this_content = setEmailContent($mail_content,$title = '伊娃系统通知');
+            $this_content = setEmailContent($mail_content,$title = '伊娃系统登陆码');
             sendMail($this_content,$email);
         }
         return json($data);
