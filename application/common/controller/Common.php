@@ -18,6 +18,8 @@ class Common extends Controller {
         if(!empty($user)){
             session('email',$email);
             $user['nikename'] == '' ? session('status',1002) : session('status',1001);
+        }else{
+            cookie('email',null);
         }
 
     }
