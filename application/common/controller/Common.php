@@ -10,7 +10,6 @@ class Common extends Controller {
          * 1001 登陆状态
          * 1002 nikename为空
          */
-        session('?status') ? '' : session('status',1000);
         //读取cookie
         $email = cookie('email');
         (!empty($email) && session('status') != 1001) ? $user = Member::get(['email'=>$email]) : cookie('email',null);
