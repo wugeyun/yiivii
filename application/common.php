@@ -26,7 +26,7 @@ function get_color(){
  * $from 正文底部来源
  * $base_content 正文内容
  */
-function setEmailContent($base_content = '邮件正文内容...',$title = '伊娃交易登陆码',$from = 'www.yiivii.com'){
+function setEmailContent($base_content = '邮件正文内容...',$title = '伊娃交易登陆码'){
     $content = '<table border="0" width="100%" cellspacing="0" cellpadding="0" style="background-color:#f7f9fa;padding-top:20px;padding-bottom:30px;">';
     $content .= '<tr>';
     $content .= '<td align="center" style="background-color: #F7F9FA" width="100%">';
@@ -41,7 +41,7 @@ function setEmailContent($base_content = '邮件正文内容...',$title = '伊�
     $content .= '</tr>';
     $content .= '<tr>';
     $content .= '<td style="padding:25px 25px 35px 25px;background-color:#f7f7f7;">';
-    $content .= '<p>来源【'.$from.'】';
+    $content .= '<p>来源【<a href="https://www.yiivii.com">www.yiivii.com</a>】';
     $content .= '<p style="text-align:right;">发送时间【'.date('Y-m-d H:i:s').'】</p>';
     $content .= '</td>';
     $content .= '</tr>';
