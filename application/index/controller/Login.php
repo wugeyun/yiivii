@@ -31,13 +31,13 @@ class Login extends Controller {
                 for($i=1;$i<100;$i++){
                     $salt = rand(1111,9999);
                     $wait = time() - $user->lastget;
-                    if($wait > 300){
+                    if($wait > 600){
                         Member::where('email',$email)->update(['salt'=>$salt,'lastget'=>time()]);
-                        $wait = 300;
+                        $wait = 600;
                         $mail_content = '<p>登 录 码【'.$salt.'】</p>';
                         break;
                     }else{
-                        $wait = 300 - $wait;
+                        $wait = 600 - $wait;
                         $mail_content = '<p>登 录 码【'.$user->salt.'】</p>';
                     }
                 }
@@ -59,7 +59,7 @@ class Login extends Controller {
         $data['code'] = 500;
         $salt = intval($salt);
         if (is_int($salt + 0) && $salt > 0){
-            $time = time() - 300;
+            $time = time() - 600;
             $info = Member::where('salt',$salt)
             ->where('lastget','>',$time)
             ->find();
