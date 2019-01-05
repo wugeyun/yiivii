@@ -43,6 +43,7 @@ class Login extends Controller {
                 }
                 //邮件发送登录码
                 $mail_content .= '<p>有效时间【'.$wait.' 秒】</p>';
+                $mail_content .= '<p>有效期至【'.date('Y-m-d H:i:s',time() + $wait).'】</p>';
                 $this_content = setEmailContent($mail_content,$title = '伊娃系统登陆码');
                 sendMail($this_content,$email);
             }
