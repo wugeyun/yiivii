@@ -31,7 +31,7 @@ class Login extends Controller {
                         $user = Member::create(['email' => $email]);
                     }
                     $salt = rand(1111,9999);
-                    $wait = time() - $user->lastget;
+                    $wait = time() - ($user->lastget + 0);
                     switch ($wait){
                         case ($wait > 600):
                             $user->salt = $salt;
