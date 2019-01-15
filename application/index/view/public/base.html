@@ -49,8 +49,8 @@
             <ul class="nav navbar-nav navbar-right">
                 {eq name="Think.session.status" value="1001"}
                 <li><a href="{:url('login/loginout')}">
-                    {if !empty(Think.session.nikename)}{Think.session.uid}
-                    {elseif !empty(Think.session.email) /}{Think.session.email}
+                    {if Think.session.nikename != ''}{Think.session.uid}
+                    {elseif Think.session.email != '' /}{Think.session.email}
                     {else /}欢迎使用,
                     {/if}
                     退出 <i class="icon icon-signout"></i>
