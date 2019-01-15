@@ -28,10 +28,10 @@ class Login extends Controller {
                     //开始查询数据库
                     $user = Member::get(['email' => $email]);
                     if($user == null){
-                        $user = Member::create(['email' => $email]);
+                        $user = Member::create(['email' => $email,'lastget'=>time()]);
                     }
                     $salt = rand(1111,9999);
-                    $wait = time() - ($user->lastget + 0);
+                    $wait = time() - $user->lastget;
                     switch ($wait){
                         case ($wait > 600):
                             $user->salt = $salt;
