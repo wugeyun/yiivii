@@ -13,7 +13,8 @@ class Member extends Common {
      */
     public function setuser($nikename){
         if(session('status') == 1002){
-            MemberModel::where('email',session('email'))->update(['nikename' => $nikename]);
+            MemberModel::where('id',session('uid'))->update(['nikename' => $nikename]);
+            session('nikename',$nikename);
             session('status',1001);
         }
     }

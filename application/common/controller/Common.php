@@ -14,7 +14,8 @@ class Common extends Controller {
         $email = cookie('email');
         (!empty($email) && session('status') != 1001) ? $user = Member::get(['email'=>$email]) : cookie('email',null);
         //判断用户
-        if(!empty($user)){
+        if($user != null){
+            session('uid',$user->id);
             session('email',$email);
             $user['nikename'] == '' ? session('status',1002) : session('status',1001);
         }
