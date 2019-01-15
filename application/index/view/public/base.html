@@ -49,7 +49,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {eq name="Think.session.status" value="1001"}
                 <li><a href="{:url('login/loginout')}">
-                    {if $Think.session.nikename != ''}{$Think.session.uid}
+                    {if $Think.session.nikename != ''}{$Think.session.nikename}
                     {elseif $Think.session.email != '' /}{$Think.session.email}
                     {else /}欢迎使用,
                     {/if}

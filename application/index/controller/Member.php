@@ -4,10 +4,12 @@ use think\Controller;
 use app\common\controller\Common;
 use app\common\model\Member as MemberModel;
 class Member extends Common {
-    public function index($email) {
+    /**
+     * @return mixed
+     */
+    public function index() {
         return view('');
     }
-
     /**
      * @param $nikename
      */
