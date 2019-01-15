@@ -2,6 +2,7 @@
 namespace app\index\controller;
 use think\Controller;
 use app\common\controller\Common;
+use app\common\model\Order;
 use app\common\model\Member as MemberModel;
 class Member extends Common {
     /**
@@ -19,5 +20,8 @@ class Member extends Common {
             session('nikename',$nikename);
             session('status',1001);
         }
+    }
+    public function order(){
+
     }
 }
