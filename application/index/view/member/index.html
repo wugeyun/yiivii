@@ -5,8 +5,9 @@
         <div class="col-md-12">
             <div class="list list-condensed">
                 <header>
-                    <h3><i class="icon-list-ul"></i> 交易日志
-                        <a href="javascript:;" class="btn btn-danger small">新增</a>
+                    <h3>
+                        <a href="javascript:;" class="btn btn-danger pull-right">新增</a>
+                        <i class="icon-list-ul"></i> 交易日志
                     </h3>
                 </header>
                 <div class="items items-hover">
@@ -26,7 +27,8 @@
                             <div class="text">突破回撤入场，止损不大，此方法可以循环使用</div>
                         </div>
                         <div class="item-footer">
-                            <span class="text-muted">{:date('Y-m-d H:i:s')}</span>
+                            记录 <span class="text-muted">{:date('Y-m-d H:i')}</span>
+                            更新 <span class="text-muted">{:date('Y-m-d H:i')}</span>
                         </div>
                     </div>
                 </div>
