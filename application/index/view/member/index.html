@@ -27,7 +27,7 @@
                             <div class="text">突破回撤入场，止损不大，此方法可以循环使用</div>
                         </div>
                         <div class="item-footer">
-                            <span class="text-muted">{:date('Y-m-d H:i')}</span>&nbsp;/&nbsp;<span class="text-muted">{:date('Y-m-d H:i')}</span>
+                            <span class="text-muted">{:date('Y-m-d H:i')}</span>&nbsp;<i class="icon icon-double-angle-right"></i>&nbsp;<span class="text-muted">{:date('Y-m-d H:i')}</span>
                         </div>
                     </div>
                 </div>
@@ -38,4 +38,13 @@
         </div>
     </div>
 </div>
+{/block}
+{block name="script"}
+{load href="/dist/css/bootstrap-editable.css,/dist/js/bootstrap-editable.min.js" /}
+<script>
+//修改内容
+$('.my-editable').editable({
+    mode:'inline'
+});
+</script>
 {/block}
