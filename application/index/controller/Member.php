@@ -18,9 +18,22 @@ class Member extends Common {
         $list = Order::where('uid',$uid)
             ->paginate(10,true,['type' => 'page\Zui']);
         $data['list'] = $list;
+        return view('',$data);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function add(){
         return view('');
     }
-    //更新
+
+    /**
+     * 更新
+     * @param $pk
+     * @param $name
+     * @param $value
+     */
     public function edit($pk,$name,$value){
         if($pk){
             Order::update(['id'=>$pk,$name => $value]);
