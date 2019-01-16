@@ -14,6 +14,9 @@ class Member extends Common {
      * @return mixed
      */
     public function index() {
+        $uid = session('uid');
+        $list = Order::where('uid',$uid)
+            ->paginate(10,false,['type' => 'page\Zui']);
         return view('');
     }
     public function order(){
