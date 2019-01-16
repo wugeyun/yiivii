@@ -47,8 +47,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {eq name="Think.session.status" value="1001"}
                 <li><a href="{:url('login/loginout')}">
-                    {if $Think.session.nikename != ''}{$Think.session.nikename},
-                    {elseif $Think.session.email != '' /}{$Think.session.email},
+                    {if $Think.session.email != ''}{$Think.session.email},
                     {else /}欢迎使用,
                     {/if}
                     退出 <i class="icon icon-signout"></i>
@@ -73,19 +72,6 @@
 <script>
     //加载img
     $("img.lazy").lazyload({effect: "fadeIn"});
-    {eq name="Think.session.status" value="1002"}
-        bootbox.prompt({
-            title: "请设置用户名",
-            inputType: 'text',
-            callback: function (name) {
-                if(name == '') return false;
-                $.post("{:url('member/setuser')}",{nikename:name},function(){
-                    return true;
-                });
-                window.location.reload();
-            }
-        });
-    {/eq}
 </script>
 {block name="script"}{/block}
 </body>
