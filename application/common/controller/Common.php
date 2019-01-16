@@ -15,6 +15,7 @@ class Common extends Controller {
             $user = Member::get(['email'=>$email]);
             session('uid',$user->id);
             session('email',$email);
+            session('status',1001);
         }else{
             cookie('email',null);
         }
