@@ -16,10 +16,16 @@ class Member extends Common {
     public function index() {
         $uid = session('uid');
         $list = Order::where('uid',$uid)
-            ->paginate(10,false,['type' => 'page\Zui']);
+            ->paginate(10,true,['type' => 'page\Zui']);
+        $data['list'] = $list;
         return view('');
     }
-    public function order(){
-
+    //更新
+    public function edit($pk,$name,$value){
+        if($pk){
+            Order::update(['id'=>$pk,$name => $value]);
+        }else{
+            $this->error('非法请求');
+        }
     }
 }
