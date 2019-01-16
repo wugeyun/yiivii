@@ -8,7 +8,6 @@ class Common extends Controller {
          * 系统状态初始化
          * 1000 游客状态
          * 1001 登陆状态
-         * 1002 nikename为空
          */
         //读取cookie
         $email = cookie('email');
@@ -16,7 +15,6 @@ class Common extends Controller {
             $user = Member::get(['email'=>$email]);
             session('uid',$user->id);
             session('email',$email);
-            $user['nikename'] == '' ? session('status',1002) : session('status',1001);
         }else{
             cookie('email',null);
         }
