@@ -7,7 +7,7 @@
                 <div class="panel-heading">最新订单 <i class="icon icon-spin icon-spinner-snake"></i></div>
                 <div class="list-group">
                     {volist name="list" id="vo"}
-                    <a href="javascript:;" class="list-group-item" data-toggle="tooltip" data-placement="top" title="{$vo.open} / {$vo.close}">
+                    <a href="javascript:;" class="list-group-item" data-toggle="tooltip" data-placement="top" title="{$vo.open|default='--'} / {$vo.close|default='--'}">
                         <span class="label label-primary">{:date('Y-m-d',$vo.create_time)}</span>
                         <span class="label">{$vo.tag}</span>
                         {egt name="vo.type" value="0"}
