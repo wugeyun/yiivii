@@ -41,3 +41,10 @@
         <button type="submit" class="btn btn-primary">提交</button>
     </div>
 </form>
+{load href="/dist/css/jquery-ui-1.10.4.custom.min.css,/dist/js/jquery-ui-1.10.4.custom.min.js" /}
+<script>
+    //auto tag
+    $("input[name=tag]").autocomplete({
+        source: "{:url('member/getdata')}"
+    });
+</script>
