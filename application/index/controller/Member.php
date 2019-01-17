@@ -21,7 +21,7 @@ class Member extends Common {
             $where['tag'] = urldecode($tag);
         }
         $list = Order::where($where)
-            -order('desc')
+            -order('id desc')
             ->paginate(10,true,['type' => 'page\Zui']);
         $data['list'] = $list;
         return view('',$data);
