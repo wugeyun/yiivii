@@ -6,14 +6,17 @@
             <div class="panel">
                 <div class="panel-heading">最新订单 <i class="icon icon-spin icon-spinner-snake"></i></div>
                 <div class="list-group">
-                    <a href="javascript:;" class="list-group-item"><span class="label label-primary">{:date('Y-m-d')}</span> <span class="label">EURUSD</span> <span class="label label-badge label-success"><i class="icon icon-level-down"></i></span></a>
-                    <a href="javascript:;" class="list-group-item"><span class="label label-primary">{:date('Y-m-d')}</span> <span class="label">EURUSD</span> <span class="label label-badge label-danger"><i class="icon icon-level-up"></i></span></a>
-                    <a href="javascript:;" class="list-group-item"><span class="label label-primary">{:date('Y-m-d')}</span> <span class="label">EURUSD</span> <span class="label label-badge label-success"><i class="icon icon-level-down"></i></span></a>
-                    <a href="javascript:;" class="list-group-item"><span class="label label-primary">{:date('Y-m-d')}</span> <span class="label">EURUSD</span> <span class="label label-badge label-success"><i class="icon icon-level-down"></i></span></a>
-                    <a href="javascript:;" class="list-group-item"><span class="label label-primary">{:date('Y-m-d')}</span> <span class="label">EURUSD</span> <span class="label label-badge label-danger"><i class="icon icon-level-up"></i></span></a>
-                    <a href="javascript:;" class="list-group-item"><span class="label label-primary">{:date('Y-m-d')}</span> <span class="label">EURUSD</span> <span class="label label-badge label-success"><i class="icon icon-level-down"></i></span></a>
-                    <a href="javascript:;" class="list-group-item"><span class="label label-primary">{:date('Y-m-d')}</span> <span class="label">EURUSD</span> <span class="label label-badge label-danger"><i class="icon icon-level-up"></i></span></a>
-                    <a href="javascript:;" class="list-group-item"><span class="label label-primary">{:date('Y-m-d')}</span> <span class="label">EURUSD</span> <span class="label label-badge label-success"><i class="icon icon-level-down"></i></span></a>
+                    {volist name="list" id="vo"}
+                    <a href="javascript:;" class="list-group-item">
+                        <span class="label label-primary">{:date('Y-m-d',$vo.create_time)}</span>
+                        <span class="label">{$vo.tag}</span>
+                        {egt name="vo.type" value="0"}
+                        <span class="label label-badge label-danger"><i class="icon icon-level-up"></i></span>
+                        {else/}
+                        <span class="label label-badge label-success"><i class="icon icon-level-down"></i></span>
+                        {/egt}
+                    </a>
+                    {/volist}
                 </div>
             </div>
             <div class="panel">
