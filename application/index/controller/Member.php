@@ -22,7 +22,7 @@ class Member extends Common {
         }
         $list = Order::where($where)
             ->order('id desc')
-            ->paginate(5,false);
+            ->paginate(5,false,['type' => 'page\Zui']);
         $data['list'] = $list;
         return view('',$data);
     }
