@@ -13,14 +13,17 @@ class Member extends Common {
     /**
      * @return mixed
      */
-    public function index() {
+    public function index($tag) {
         $uid = session('uid');
-        $list = Order::where('uid',$uid)
+        $where['uid'] = $uid;
+        if($tag != ''){
+            $where['tag'] = urldecode($tag);
+        }
+        $list = Order::where($where)
             ->paginate(10,true,['type' => 'page\Zui']);
         $data['list'] = $list;
         return view('',$data);
     }
-
     /**
      * @return mixed
      */
@@ -28,6 +31,22 @@ class Member extends Common {
         return view('');
     }
 
+    /**
+     * 新增订单
+     */
+    public function order(){
+        $post = input('post.');
+        if($post){
+            $order = Order::create($post);
+            if($order->id){
+                $this->success('操作成功', null, '', 1);
+            }else{
+                $this->error('非法请求.');
+            }
+        }else{
+            $this->error('非法请求');
+        }
+    }
     /**
      * 更新
      * @param $pk

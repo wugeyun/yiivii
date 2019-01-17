@@ -11,114 +11,33 @@
                     </h3>
                 </header>
                 <div class="items items-hover">
+                    {volist name="list" id="vo"}
                     <div class="item">
                         <div class="item-heading">
                             <div class="pull-right">
-                                入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="{:url('member/edit')}" data-pk="0" data-title="入场点">1.1400</a> &nbsp;
-                                平仓价 <a href="javascript:;" class="my-editable" data-type="text" data-name="close" data-url="{:url('member/edit')}" data-pk="0" data-title="出场点">1.1450</a> &nbsp;
-                                浮亏数 <a href="javascript:;" class="my-editable" data-type="text" data-name="power" data-url="{:url('member/edit')}" data-pk="0" data-title="浮亏">-50</a>
+                                入场价 <a href="javascript:;" class="my-editable" data-type="number" data-name="open" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场点">{$vo.open|default="0"}</a> &nbsp;
+                                平仓价 <a href="javascript:;" class="my-editable" data-type="number" data-name="close" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="出场点">{$vo.close|default="0"}</a> &nbsp;
+                                浮亏数 <a href="javascript:;" class="my-editable" data-type="number" data-name="power" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="浮亏数">{$vo.power|default="0"}</a>
                             </div>
                             <h4>
                                 <span class="label label-success"><i class="icon icon-level-down"></i></span>
-                                <a href="javascript:;" class="my-editable" data-type="text" data-name="tag" data-url="{:url('member/edit')}" data-pk="0" data-title="品种">EURUSD</a>
+                                <a href="javascript:;" class="my-editable" data-type="text" data-name="tag" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="品种">{$vo.tag}</a>
+                                <a href="{:url('member/index',['tag'=>urlencode($vo.tag)])}" title="相同记录"><i class="icon icon-link"></i></a>
                             </h4>
                         </div>
                         <div class="item-content">
                             <div class="text">
-                                <a href="javascript:;" class="my-editable" data-type="textarea" data-name="mark" data-url="{:url('member/edit')}" data-pk="0" data-title="总结">突破回撤入场，止损不大，此方法可以循环使用</a>
+                                <a href="javascript:;" class="my-editable" data-type="textarea" data-name="mark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="总结">{$vo.mark|default="交易总结：什么都没写。"}</a>
                             </div>
                         </div>
                         <div class="item-footer">
                             <span class="text-muted">{:date('Y-m-d H:i')}</span>&nbsp;<i class="icon icon-double-angle-right"></i>&nbsp;<span class="text-muted">{:date('Y-m-d H:i')}</span>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="item-heading">
-                            <div class="pull-right">
-                                入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="" data-pk="0" data-title="入场点">1.1400</a> &nbsp;
-                                平仓价 <a href="javascript:;" class="my-editable" data-type="text" data-name="close" data-url="" data-pk="0" data-title="出场点">1.1450</a> &nbsp;
-                                浮亏数 <a href="javascript:;" class="my-editable" data-type="text" data-name="power" data-url="" data-pk="0" data-title="浮亏">-50</a>
-                            </div>
-                            <h4>
-                                <a href="javascript:;" class="label label-success"><i class="icon icon-level-down"></i></a>
-                                <a href="javascript:;" class="my-editable" data-type="text" data-name="tag" data-url="" data-pk="0" data-title="品种">EURUSD</a>
-                            </h4>
-                        </div>
-                        <div class="item-content">
-                            <div class="text">
-                                <a href="javascript:;" class="my-editable" data-type="textarea" data-name="mark" data-url="" data-pk="0" data-title="总结">突破回撤入场，止损不大，此方法可以循环使用</a>
-                            </div>
-                        </div>
-                        <div class="item-footer">
-                            <span class="text-muted">{:date('Y-m-d H:i')}</span>&nbsp;<i class="icon icon-double-angle-right"></i>&nbsp;<span class="text-muted">{:date('Y-m-d H:i')}</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-heading">
-                            <div class="pull-right">
-                                入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="" data-pk="0" data-title="入场点">1.1400</a> &nbsp;
-                                平仓价 <a href="javascript:;" class="my-editable" data-type="text" data-name="close" data-url="" data-pk="0" data-title="出场点">1.1450</a> &nbsp;
-                                浮亏数 <a href="javascript:;" class="my-editable" data-type="text" data-name="power" data-url="" data-pk="0" data-title="浮亏">-50</a>
-                            </div>
-                            <h4>
-                                <a href="javascript:;" class="label label-success"><i class="icon icon-level-down"></i></a>
-                                <a href="javascript:;" class="my-editable" data-type="text" data-name="tag" data-url="" data-pk="0" data-title="品种">EURUSD</a>
-                            </h4>
-                        </div>
-                        <div class="item-content">
-                            <div class="text">
-                                <a href="javascript:;" class="my-editable" data-type="textarea" data-name="mark" data-url="" data-pk="0" data-title="总结">突破回撤入场，止损不大，此方法可以循环使用</a>
-                            </div>
-                        </div>
-                        <div class="item-footer">
-                            <span class="text-muted">{:date('Y-m-d H:i')}</span>&nbsp;<i class="icon icon-double-angle-right"></i>&nbsp;<span class="text-muted">{:date('Y-m-d H:i')}</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-heading">
-                            <div class="pull-right">
-                                入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="" data-pk="0" data-title="入场点">1.1400</a> &nbsp;
-                                平仓价 <a href="javascript:;" class="my-editable" data-type="text" data-name="close" data-url="" data-pk="0" data-title="出场点">1.1450</a> &nbsp;
-                                浮亏数 <a href="javascript:;" class="my-editable" data-type="text" data-name="power" data-url="" data-pk="0" data-title="浮亏">-50</a>
-                            </div>
-                            <h4>
-                                <a href="javascript:;" class="label label-success"><i class="icon icon-level-down"></i></a>
-                                <a href="javascript:;" class="my-editable" data-type="text" data-name="tag" data-url="" data-pk="0" data-title="品种">EURUSD</a>
-                            </h4>
-                        </div>
-                        <div class="item-content">
-                            <div class="text">
-                                <a href="javascript:;" class="my-editable" data-type="textarea" data-name="mark" data-url="" data-pk="0" data-title="总结">突破回撤入场，止损不大，此方法可以循环使用</a>
-                            </div>
-                        </div>
-                        <div class="item-footer">
-                            <span class="text-muted">{:date('Y-m-d H:i')}</span>&nbsp;<i class="icon icon-double-angle-right"></i>&nbsp;<span class="text-muted">{:date('Y-m-d H:i')}</span>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-heading">
-                            <div class="pull-right">
-                                入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="" data-pk="0" data-title="入场点">1.1400</a> &nbsp;
-                                平仓价 <a href="javascript:;" class="my-editable" data-type="text" data-name="close" data-url="" data-pk="0" data-title="出场点">1.1450</a> &nbsp;
-                                浮亏数 <a href="javascript:;" class="my-editable" data-type="text" data-name="power" data-url="" data-pk="0" data-title="浮亏">-50</a>
-                            </div>
-                            <h4>
-                                <a href="javascript:;" class="label label-success"><i class="icon icon-level-down"></i></a>
-                                <a href="javascript:;" class="my-editable" data-type="text" data-name="tag" data-url="" data-pk="0" data-title="品种">EURUSD</a>
-                            </h4>
-                        </div>
-                        <div class="item-content">
-                            <div class="text">
-                                <a href="javascript:;" class="my-editable" data-type="textarea" data-name="mark" data-url="" data-pk="0" data-title="总结">突破回撤入场，止损不大，此方法可以循环使用</a>
-                            </div>
-                        </div>
-                        <div class="item-footer">
-                            <span class="text-muted">{:date('Y-m-d H:i')}</span>&nbsp;<i class="icon icon-double-angle-right"></i>&nbsp;<span class="text-muted">{:date('Y-m-d H:i')}</span>
-                        </div>
-                    </div>
+                    {/volist}
                 </div>
                 <footer>
-                    page
+                    {$list->render()}
                 </footer>
             </div>
         </div>
