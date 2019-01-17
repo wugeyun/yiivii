@@ -68,59 +68,6 @@
         "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
     },
     {
-        "name": "topthink/framework",
-        "version": "v5.1.31",
-        "version_normalized": "5.1.31.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/top-think/framework.git",
-            "reference": "adde39c236cfeda454fe725d999d89abf67b8caf"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/top-think/framework/zipball/adde39c236cfeda454fe725d999d89abf67b8caf",
-            "reference": "adde39c236cfeda454fe725d999d89abf67b8caf",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.6.0",
-            "topthink/think-installer": "2.*"
-        },
-        "require-dev": {
-            "johnkary/phpunit-speedtrap": "^1.0",
-            "mikey179/vfsstream": "~1.6",
-            "phpdocumentor/reflection-docblock": "^2.0",
-            "phploc/phploc": "2.*",
-            "phpunit/phpunit": "^5.0|^6.0",
-            "sebastian/phpcpd": "2.*",
-            "squizlabs/php_codesniffer": "2.*"
-        },
-        "time": "2018-12-11T03:55:34+00:00",
-        "type": "think-framework",
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache-2.0"
-        ],
-        "authors": [
-            {
-                "name": "liu21st",
-                "email": "liu21st@gmail.com"
-            },
-            {
-                "name": "yunwuxin",
-                "email": "448901948@qq.com"
-            }
-        ],
-        "description": "the new thinkphp framework",
-        "homepage": "http://thinkphp.cn/",
-        "keywords": [
-            "framework",
-            "orm",
-            "thinkphp"
-        ]
-    },
-    {
         "name": "topthink/think-installer",
         "version": "v2.0.0",
         "version_normalized": "2.0.0.0",
@@ -161,6 +108,59 @@
                 "name": "yunwuxin",
                 "email": "448901948@qq.com"
             }
+        ]
+    },
+    {
+        "name": "topthink/framework",
+        "version": "v5.1.33",
+        "version_normalized": "5.1.33.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/top-think/framework.git",
+            "reference": "477e1cef91290a36398ecbcdffcec7268d80f0dd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/top-think/framework/zipball/477e1cef91290a36398ecbcdffcec7268d80f0dd",
+            "reference": "477e1cef91290a36398ecbcdffcec7268d80f0dd",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6.0",
+            "topthink/think-installer": "2.*"
+        },
+        "require-dev": {
+            "johnkary/phpunit-speedtrap": "^1.0",
+            "mikey179/vfsstream": "~1.6",
+            "phpdocumentor/reflection-docblock": "^2.0",
+            "phploc/phploc": "2.*",
+            "phpunit/phpunit": "^5.0|^6.0",
+            "sebastian/phpcpd": "2.*",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "time": "2019-01-16T06:10:52+00:00",
+        "type": "think-framework",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "liu21st",
+                "email": "liu21st@gmail.com"
+            },
+            {
+                "name": "yunwuxin",
+                "email": "448901948@qq.com"
+            }
+        ],
+        "description": "the new thinkphp framework",
+        "homepage": "http://thinkphp.cn/",
+        "keywords": [
+            "framework",
+            "orm",
+            "thinkphp"
         ]
     }
 ]
