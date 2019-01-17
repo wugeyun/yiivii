@@ -54,7 +54,7 @@ class Member extends Common {
         if($post){
             $order = Order::create($post);
             if($order->id){
-                $this->success('操作成功', null, '', 1);
+                $this->success('添加成功', null, '', 1);
             }else{
                 $this->error('非法请求.');
             }
