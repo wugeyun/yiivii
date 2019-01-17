@@ -20,7 +20,11 @@
                                 浮亏数 <a href="javascript:;" class="my-editable" data-type="number" data-name="power" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="浮亏数">{$vo.power|default="0"}</a>
                             </div>
                             <h4>
+                                {egt name="vo.type" value="0"}
+                                <span class="label label-danger"><i class="icon icon-level-up"></i></span>
+                                {else/}
                                 <span class="label label-success"><i class="icon icon-level-down"></i></span>
+                                {/egt}
                                 <a href="javascript:;" class="my-editable" data-type="text" data-name="tag" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="品种">{$vo.tag}</a>
                                 <a href="{:url('member/index',['tag'=>urlencode($vo.tag)])}" title="相同记录"><i class="icon icon-link"></i></a>
                             </h4>
