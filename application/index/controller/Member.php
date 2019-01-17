@@ -46,12 +46,12 @@ class Member extends Common {
     /**
      * 新增订单
      */
-    public function order(){
+    public function order($type){
+        if(!$type){
+            $this->error('请选择多空选项');
+        }
         $post = input('post.');
         if($post){
-            if($post['type'] == ''){
-                $this->error('请选择多空选项');
-            }
             $order = Order::create($post);
             if($order->id){
                 $this->success('操作成功', null, '', 1);
