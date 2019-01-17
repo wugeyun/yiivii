@@ -3,6 +3,7 @@ namespace app\index\controller;
 use think\Controller;
 use app\common\controller\Common;
 use app\common\model\Order;
+use app\common\model\Tags;
 use app\common\model\Member as MemberModel;
 class Member extends Common {
     protected function initialize(){
@@ -31,6 +32,18 @@ class Member extends Common {
         return view('');
     }
 
+    /**
+     * @return mixed
+     */
+    public function getdata($term = ''){
+        if($term){
+            $list = Tags::field('name')
+                ->where('name','like',"%$term%")
+                ->group('name')
+                ->column('name');
+            return json($list);
+        }
+    }
     /**
      * 新增订单
      */

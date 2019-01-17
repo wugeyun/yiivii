@@ -49,11 +49,15 @@
 </div>
 {/block}
 {block name="script"}
-{load href="/dist/css/bootstrap-editable.css,/dist/js/bootstrap-editable.min.js" /}
+{load href="/dist/css/bootstrap-editable.css,/dist/css/jquery-ui-1.10.4.custom.min.css,/dist/js/bootstrap-editable.min.js,/dist/js/jquery-ui-1.10.4.custom.min.js" /}
 <script>
 //修改内容
 $('.my-editable').editable({
     mode:'inline'
+});
+/auto txt
+$("input[name=tag]").autocomplete({
+    source: "{:url('member/getdata')}"
 });
 </script>
 {/block}
