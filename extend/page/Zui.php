@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006~2017 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -25,13 +25,12 @@ class Zui extends Paginator
     {
         return $this->getDisabledTextWrapper('共 '.$this->total.' 条');
     }
-
     /**
      * 上一页按钮
      * @param string $text
      * @return string
      */
-    protected function getPreviousButton($text = "上一页")
+    protected function getPreviousButton($text = "&laquo;")
     {
 
         if ($this->currentPage() <= 1) {
@@ -50,7 +49,7 @@ class Zui extends Paginator
      * @param string $text
      * @return string
      */
-    protected function getNextButton($text = '下一页')
+    protected function getNextButton($text = '&raquo;')
     {
         if (!$this->hasMore) {
             return $this->getDisabledTextWrapper($text);
@@ -67,19 +66,20 @@ class Zui extends Paginator
      */
     protected function getLinks()
     {
-        if ($this->simple)
+        if ($this->simple) {
             return '';
+        }
 
         $block = [
             'first'  => null,
             'slider' => null,
-            'last'   => null
+            'last'   => null,
         ];
 
         $side   = 1;//3
-        $window = $side * 2;//2
+        $window = $side * 2;
 
-        if ($this->lastPage < $window + 3) {//6
+        if ($this->lastPage < $window + 6) {
             $block['first'] = $this->getUrlRange(1, $this->lastPage);
         } elseif ($this->currentPage <= $window) {
             $block['first'] = $this->getUrlRange(1, $window + 2);
@@ -127,7 +127,7 @@ class Zui extends Paginator
                 );
             } else {
                 return sprintf(
-                    '<ul class="pager">%s %s %s %s</ul>',
+                    '<ul class="pagination pager">%s %s %s %s</ul>',
                     //新增总数 by less 2017-12-4
                     $this->getTotalButton(),
                     $this->getPreviousButton(),
@@ -147,7 +147,7 @@ class Zui extends Paginator
      */
     protected function getAvailablePageWrapper($url, $page)
     {
-        return '<li><a href="' . htmlentities($url) . '" target="_self">' . $page . '</a></li>';
+        return '<li><a href="' . htmlentities($url) . '">' . $page . '</a></li>';
     }
 
     /**
@@ -208,7 +208,7 @@ class Zui extends Paginator
      */
     protected function getPageLinkWrapper($url, $page)
     {
-        if ($page == $this->currentPage()) {
+        if ($this->currentPage() == $page) {
             return $this->getActivePageWrapper($page);
         }
 

@@ -24,7 +24,6 @@ class Member extends Common {
             ->order('id desc')
             ->paginate(5,true,['type' => 'page\Zui']);
         $data['list'] = $list;
-        $data['page'] = $list->render();
         return view('',$data);
     }
     /**
