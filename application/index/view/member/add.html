@@ -1,32 +1,43 @@
-<label class="radio-inline">
-    <input type="radio" name="type" value="1">
-    <span class="label label-danger">多 <i class="icon icon-level-up"></i></span>
-</label>
-<label class="radio-inline">
-    <input type="radio" name="type" value="-1">
-    <span class="label label-success">空 <i class="icon icon-level-down"></i></span>
-</label>
-<hr>
-<div class="input-control has-label-left has-icon-right">
-    <input id="inputTag" type="text" class="form-control" placeholder="">
-    <label for="inputTag" class="input-control-label-left text-right">品种名称:</label>
-    <label for="inputTag" class="input-control-icon-right">如:EURUSD</label>
-</div>
-<hr>
-<div class="input-control has-label-left has-icon-right">
-    <input id="inputOpen" type="text" class="form-control" placeholder="">
-    <label for="inputOpen" class="input-control-label-left text-right">开仓价格:</label>
-    <label for="inputOpen" class="input-control-icon-right">如:1.14000</label>
-</div>
-<hr>
-<div class="input-control has-label-left has-icon-right">
-    <input id="inputClose" type="text" class="form-control" placeholder="未平仓可留空">
-    <label for="inputClose" class="input-control-label-left text-right">平仓价格:</label>
-    <label for="inputClose" class="input-control-icon-right">如:1.15000</label>
-</div>
-<hr>
-<div class="input-control has-label-left has-icon-right">
-    <input id="inputPower" type="text" class="form-control" placeholder="未平仓可留空">
-    <label for="inputPower" class="input-control-label-left text-right">浮亏数量:</label>
-    <label for="inputPower" class="input-control-icon-right">如:-100</label>
-</div>
+<form action="{:url('member/order')}">
+    <div class="form-group">
+        <label class="radio-inline">
+            <input type="radio" name="type" value="1">
+            <span class="label label-danger">多 <i class="icon icon-level-up"></i></span>
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="type" value="-1">
+            <span class="label label-success">空 <i class="icon icon-level-down"></i></span>
+        </label>
+    </div>
+    <div class="form-group">
+        <div class="input-control has-label-left has-label-right">
+            <input id="inputTag" type="text" class="form-control" placeholder="">
+            <label for="inputTag" class="input-control-label-left text-right">品种名称:</label>
+            <label for="inputTag" class="input-control-icon-right">如:EURUSD</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-control has-label-left has-label-right">
+            <input id="inputOpen" type="number" class="form-control" placeholder="">
+            <label for="inputOpen" class="input-control-label-left text-right">开仓价格:</label>
+            <label for="inputOpen" class="input-control-icon-right">如:1.14000</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-control has-label-left has-label-right">
+            <input id="inputClose" type="number" class="form-control" placeholder="未平仓可留空">
+            <label for="inputClose" class="input-control-label-left text-right">平仓价格:</label>
+            <label for="inputClose" class="input-control-icon-right">如:1.15000</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-control has-label-left has-label-right">
+            <input id="inputPower" type="number" class="form-control" placeholder="未平仓可留空">
+            <label for="inputPower" class="input-control-label-left text-right">浮亏数量:</label>
+            <label for="inputPower" class="input-control-icon-right">如:-100</label>
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">提交</button>
+    </div>
+</form>
