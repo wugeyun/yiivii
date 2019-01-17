@@ -13,7 +13,7 @@ class Member extends Common {
     /**
      * @return mixed
      */
-    public function index($tag) {
+    public function index($tag = '') {
         $uid = session('uid');
         $where['uid'] = $uid;
         if($tag != ''){
