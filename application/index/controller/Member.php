@@ -46,8 +46,8 @@ class Member extends Common {
     /**
      * 新增订单
      */
-    public function order($type){
-        if(!$type){
+    public function order($type = ''){
+        if($type == ''){
             $this->error('请选择多空选项');
         }
         $post = input('post.');
