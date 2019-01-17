@@ -54,7 +54,7 @@ class Member extends Common {
         if($post){
             $order = Order::create($post);
             if($order->id){
-                $this->success('添加成功', null, '', 1);
+                $this->redirect('member/index');
             }else{
                 $this->error('非法请求.');
             }
