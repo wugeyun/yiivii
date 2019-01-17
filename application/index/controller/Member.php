@@ -37,10 +37,9 @@ class Member extends Common {
      */
     public function getdata($term = ''){
         if($term){
-            $list = Tags::field('name')
-                ->where('name','like',"%$term%")
-                ->group('name')
-                ->column('name');
+            $list = Tags::field('tag')
+                ->where('tag','like',"%$term%")
+                ->column('tag');
             return json($list);
         }
     }
