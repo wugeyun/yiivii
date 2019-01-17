@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="item-footer">
-                            <span class="text-muted">{:date('Y-m-d H:i')}</span>&nbsp;<i class="icon icon-double-angle-right"></i>&nbsp;<span class="text-muted">{:date('Y-m-d H:i')}</span>
+                            <span class="text-muted">{:date('Y-m-d H:i',$vo.create_time)}</span>&nbsp;<i class="icon icon-double-angle-right"></i>&nbsp;<span class="text-muted">{:date('Y-m-d H:i',$vo.update_time)}</span>
                         </div>
                     </div>
                     {/volist}
