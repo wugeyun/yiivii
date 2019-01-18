@@ -7,7 +7,7 @@ use app\common\model\Tags;
 use app\common\model\Member as MemberModel;
 class Member extends Common {
     protected function initialize(){
-        if(session('?uid') == false){
+        if(session('status') != 1001){
             $this->error('请使用Email登陆');
         }
     }
