@@ -82,7 +82,8 @@ function sendMail($content = '',$to = 'hswddan@qq.com',$title = '伊娃系统通
         //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');        // 可以设定名字
         // 内容
         $mail->isHTML(true);        // 设置邮件格式为HTML
-        $mail->Subject = $title;
+        $mail->Subject = "=?UTF-8?B?".base64_encode($title)."?=";
+        $mail->CharSet  = "UTF-8";
         $mail->Body    = $content;
         $mail->AltBody = '收件人(https://www.yiivii.com)';     //邮件正文不支持HTML的备用显示
         $mail->send();
