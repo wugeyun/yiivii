@@ -11,13 +11,13 @@ class Common extends Controller {
          */
         //读取cookie
         $email = cookie('email');
+        $uid = cookie('uid');
+        //写入session
         if(!empty($email) && session('status') != 1001){
-            $user = Member::get(['email'=>$email]);
+            $user = Member::get(['email'=>$email,'uid'=>$uid]);
             session('uid',$user->id);
             session('email',$email);
             session('status',1001);
-        }else{
-            cookie('email',null);
         }
     }
 }
