@@ -94,7 +94,7 @@ class Login extends Controller {
      * 退出
      */
     public function loginout(){
-        cookie('email',null);
+        cookie('user_info',null);
         session(null);
         $this->redirect(url('/'));
     }
