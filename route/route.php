@@ -11,4 +11,4 @@
 
 //首页
 Route::rule('/', 'index/index');
-Route::rule('member/[:tag]/[:power]', 'member/index');
+Route::rule('member', 'member/index');
