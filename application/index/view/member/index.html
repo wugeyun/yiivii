@@ -56,16 +56,16 @@
 {block name="script"}
 {load href="/dist/css/bootstrap-editable.css,/dist/js/bootstrap-editable.min.js" /}
 <script>
-// 点击按钮时显示漂浮消息
-$('.my-editable').on('click', function() {
     //修改内容
-    $(this).editable({
+    $('.my-editable').editable({
         mode:'inline'
     });
-    new $.zui.Messager($(this).data('title'), {
-        icon: 'bell',
-        placement: 'bottom-right'
-    }).show();
-});
+    // 点击按钮时显示漂浮消息
+    $('.my-editable').on('click', function() {
+        new $.zui.Messager($(this).data('title'), {
+            icon: 'bell',
+            placement: 'bottom-right'
+        }).show();
+    });
 </script>
 {/block}
