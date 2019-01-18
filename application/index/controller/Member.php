@@ -20,20 +20,18 @@ class Member extends Common {
         if($tag != ''){
             $where[] = ['tag','=',urldecode($tag)];
         }
-        if($power != ''){
-            switch ($power){
-                case 'eq':
-                    $where[] = ['power','=',0];
-                    break;
-                case 'gt':
-                    $where[] = ['power','>',0];
-                    break;
-                case 'lt':
-                    $where[] = ['power','<',0];
-                    break;
-                default:
-                    break;
-            }
+        switch ($power){
+            case 'eq':
+                $where[] = ['power','=',0];
+                break;
+            case 'gt':
+                $where[] = ['power','>',0];
+                break;
+            case 'lt':
+                $where[] = ['power','<',0];
+                break;
+            default:
+                break;
         }
         //列表
         $list = Order::where($where)
