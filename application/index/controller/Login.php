@@ -75,7 +75,7 @@ class Login extends Controller {
             if($info != null){
                 //写入cookie
                 cookie('email',$info['email'],3600*24*90);
-                cookie('uid',$info['uid'],3600*24*90);
+                cookie('uid',$info['id'],3600*24*90);
                 session('status',1001);
                 //清空
                 $info->salt = '';

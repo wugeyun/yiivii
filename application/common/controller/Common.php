@@ -14,7 +14,7 @@ class Common extends Controller {
         $uid = cookie('uid');
         //写入session
         if(!empty($email) && session('status') != 1001){
-            $user = Member::get(['email'=>$email,'uid'=>$uid]);
+            $user = Member::get(['email'=>$email,'id'=>$uid]);
             session('uid',$user->id);
             session('email',$email);
             session('status',1001);
