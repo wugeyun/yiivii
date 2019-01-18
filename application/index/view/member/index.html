@@ -25,7 +25,7 @@
                                 {else/}
                                 <span class="label label-success"><i class="icon icon-level-down"></i></span>
                                 {/egt}
-                                <a href="javascript:;" class="my-editable" data-type="text" data-name="tag" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="品种">{$vo.tag}</a>
+                                <a href="{:url('member/index',['tag'=>urlencode($vo.tag)])}" title="查看同品种">{$vo.tag}</a>
                             </h4>
                         </div>
                         <div class="item-content">
