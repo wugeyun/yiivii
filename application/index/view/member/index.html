@@ -18,7 +18,7 @@
                 </header>
                 <div class="items items-hover">
                     {volist name="list" id="vo" empty="列表空荡荡，点击右上角新增一个订单日志吧 :-)"}
-                    <div class="item {lt name='vo.power' value='0'}text-danger{/lt}">
+                    <div class="item {lt name='vo.power' value='0'}text-danger{/lt}{gt name='vo.power' value='0'}text-success{/gt}">
                         <div class="item-heading">
                             <div class="pull-right">
                                 入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场价位">{$vo.open|default="0"}</a> &nbsp;
