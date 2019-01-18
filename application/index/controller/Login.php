@@ -77,7 +77,6 @@ class Login extends Controller {
                 $user_info['uid'] = $info->id;
                 $user_info['email'] = $info->email;
                 cookie('user_info',$user_info,3600*24*90);
-                session('status',1001);
                 //清空
                 $info->salt = '';
                 $info->lastlogin = time();
