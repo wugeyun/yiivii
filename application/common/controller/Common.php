@@ -13,7 +13,7 @@ class Common extends Controller {
         $user_info = cookie('user_info');
         //写入session
         if(!empty($user_info) && session('status') != 1001){
-            $user = Member::where(['id'=>$user_info['uid'],'email'=>$user_info['email']]);
+            $user = Member::where(['id'=>$user_info['uid'],'email'=>$user_info['email']])->find();
             session('uid',$user->id);
             session('email',$user->email);
             session('status',1001);
