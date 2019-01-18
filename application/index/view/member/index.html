@@ -9,9 +9,9 @@
                     <div class="clearfix">
                         <div class="btn-group pull-right">
                             <a href="{:url('member/index')}" class="btn btn-primary">总计 <span class="label label-badge">{$count}</span></a>
-                            <a href="{:url('member/index',['tag'=>'','power'=>'eq'])}" class="btn btn-info">持仓 <span class="label label-badge">{$eq}</span></a>
-                            <a href="{:url('member/index',['tag'=>'','power'=>'lt'])}" class="btn btn-warning">亏损 <span class="label label-badge">{$lt}</span></a>
-                            <a href="{:url('member/index',['tag'=>'','power'=>'gt'])}" class="btn btn-success">盈利 <span class="label label-badge">{$gt}</span></a>
+                            <a href="{:url('member/index',['power'=>'eq'])}" class="btn btn-info">持仓 <span class="label label-badge">{$eq}</span></a>
+                            <a href="{:url('member/index',['power'=>'lt'])}" class="btn btn-warning">亏损 <span class="label label-badge">{$lt}</span></a>
+                            <a href="{:url('member/index',['power'=>'gt'])}" class="btn btn-success">盈利 <span class="label label-badge">{$gt}</span></a>
                             <a href="javascript:;" class="btn btn-danger" data-remote="{:url('member/add')}" data-icon="plus" data-title="新增一个交易记录" data-moveable="true" data-toggle="modal" data-size="lg">新增 <i class="icon icon-plus"></i></a>
                         </div>
                     </div>
