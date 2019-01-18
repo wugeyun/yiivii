@@ -8,7 +8,7 @@ class Index extends Common {
      * @return mixed
      */
     public function index() {
-        $list = Order::order('id desc')->limit(6)->select();
+        $list = Order::order('id desc')->limit(5)->select();
         $count = Order::where('uid',session('uid'))->count();
         $data['count'] = $count;
         $data['list'] = $list;
