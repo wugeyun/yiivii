@@ -5,9 +5,9 @@
         <div class="col-md-4 pull-right">
             <div class="visible-xs">
                 {eq name="Think.session.status" value="1001"}
-                <h3 class="text-red"><a href="{:url('member/index')}" class="btn btn-danger">查看我的交易订单</a> 总结就有收获 <i class="icon icon-thumbs-o-up"></i></h3>
+                <h3 class="text-red my-mt0"><a href="{:url('member/index')}" class="btn btn-danger">查看我的交易订单</a> <small>总结就有收获</small> <i class="icon icon-thumbs-o-up"></i></h3>
                 {else /}
-                <h3 class="text-red"><a href="javascript:;" data-remote="{:url('login/index')}" data-show-header="false" data-toggle="modal" data-backdrop="false" class="btn btn-danger">立即登记</a> 开始锻造你的成功交易密码 <i class="icon icon-key"></i></h3>
+                <h3 class="text-red my-mt0"><a href="javascript:;" data-remote="{:url('login/index')}" data-show-header="false" data-toggle="modal" data-backdrop="false" class="btn btn-danger">立即登记</a> 开始锻造你的成功交易密码 <i class="icon icon-key"></i></h3>
                 {/eq}
             </div>
             <div class="panel">
@@ -155,7 +155,7 @@
             {neq name="Think.session.status" value="1001"}
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h3 class="text-red"><a href="javascript:;" data-remote="{:url('login/index')}" data-show-header="false" data-toggle="modal" data-backdrop="false" class="btn btn-danger">立即登记</a> &nbsp; 开始锻造你的成功交易密码 <i class="icon icon-key"></i></h3>
+                    <h3 class="text-red my-mt0"><a href="javascript:;" data-remote="{:url('login/index')}" data-show-header="false" data-toggle="modal" data-backdrop="false" class="btn btn-danger">立即登记</a> &nbsp; 开始锻造你的成功交易密码 <i class="icon icon-key"></i></h3>
                 </div>
                 <div class="col-md-12">
                     <hr>
