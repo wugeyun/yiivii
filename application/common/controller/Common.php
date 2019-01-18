@@ -10,13 +10,12 @@ class Common extends Controller {
          * 1001 登陆状态
          */
         //读取cookie
-        $email = cookie('email');
-        $uid = cookie('uid');
+        $user_info = cookie('user_info');
         //写入session
-        if(!empty($email) && session('status') != 1001){
-            $user = Member::get(['email'=>$email,'id'=>$uid]);
+        if(!empty($user_info) && session('status') != 1001){
+            $user = Member::where(['id'=>$user_info['uid'],'email'=>$user_info['email']]);
             session('uid',$user->id);
-            session('email',$email);
+            session('email',$user->email);
             session('status',1001);
         }
     }
