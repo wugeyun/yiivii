@@ -12,7 +12,7 @@
                 </header>
                 <div class="items items-hover">
                     {volist name="list" id="vo" empty="列表空荡荡，点击右上角新增一个订单日志吧 :-)"}
-                    <div class="item">
+                    <div class="item {lt name='vo.power' value='0'}text-danger{/lt}">
                         <div class="item-heading">
                             <div class="pull-right">
                                 入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场点">{$vo.open|default="0"}</a> &nbsp;
@@ -26,7 +26,6 @@
                                 <span class="label label-success"><i class="icon icon-level-down"></i></span>
                                 {/egt}
                                 <a href="javascript:;" class="my-editable" data-type="text" data-name="tag" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="品种">{$vo.tag}</a>
-                                <a href="{:url('member/index',['tag'=>urlencode($vo.tag)])}" title="相同记录"><i class="icon icon-link"></i></a>
                             </h4>
                         </div>
                         <div class="item-content">
