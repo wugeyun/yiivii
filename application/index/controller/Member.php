@@ -14,15 +14,39 @@ class Member extends Common {
     /**
      * @return mixed
      */
-    public function index($tag = '') {
+    public function index($tag = '',$power = '') {
         $uid = session('uid');
-        $where['uid'] = $uid;
+        $where[] = ['uid','=',$uid];
         if($tag != ''){
-            $where['tag'] = urldecode($tag);
+            $where[] = ['tag','=',urldecode($tag)];
         }
+        if($power != ''){
+            switch ($power){
+                case 'eq':
+                    $where[] = ['power','=',0];
+                    break;
+                case 'gt':
+                    $where[] = ['power','>',0];
+                    break;
+                case 'lt':
+                    $where[] = ['power','<',0];
+                    break;
+                default:
+                    break;
+            }
+        }
+        //列表
         $list = Order::where($where)
             ->order('id desc')
             ->paginate(10,false,['type' => 'page\Zui']);
+        //总数
+        $data['count'] = Order::where('uid',$uid)->count();
+        //持仓
+        $data['eq'] = Order::where('uid',$uid)->where('power',0)->count();
+        //盈利
+        $data['gt'] = Order::where('uid',$uid)->where('power','>',0)->count();
+        //亏损
+        $data['lt'] = Order::where('uid',$uid)->where('power','<',0)->count();
         $data['list'] = $list;
         return view('',$data);
     }

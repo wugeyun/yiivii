@@ -5,19 +5,23 @@
         <div class="col-md-12">
             <div class="list list-condensed">
                 <header>
-                    <h3>
-                        <a href="javascript:;" class="btn btn-danger pull-right" data-remote="{:url('member/add')}" data-icon="plus" data-title="新增一个交易记录" data-moveable="true" data-toggle="modal" data-size="lg">新增交易 <i class="icon icon-plus"></i></a>
-                        <i class="icon-list-ul"></i> 交易日志
-                    </h3>
+                    <h3><i class="icon-list-ul"></i> 交易日志</h3>
+                    <div class="btn-group text-right">
+                        <a href="{:url('member/index')}" class="btn btn-primary">总计 <span class="label label-badge">{$count}</span></a>
+                        <a href="{:url('member/index',['power'=>'eq'])}" class="btn btn-info">持仓 <span class="label label-badge">{$count}</span></a>
+                        <a href="{:url('member/index',['power'=>'lt'])}" class="btn btn-warning">亏损 <span class="label label-badge">{$count}</span></a>
+                        <a href="{:url('member/index',['power'=>'gt'])}" class="btn btn-success">盈利 <span class="label label-badge">{$count}</span></a>
+                        <a href="javascript:;" class="btn btn-danger" data-remote="{:url('member/add')}" data-icon="plus" data-title="新增一个交易记录" data-moveable="true" data-toggle="modal" data-size="lg">新增 <i class="icon icon-plus"></i></a>
+                    </div>
                 </header>
                 <div class="items items-hover">
                     {volist name="list" id="vo" empty="列表空荡荡，点击右上角新增一个订单日志吧 :-)"}
                     <div class="item {lt name='vo.power' value='0'}text-danger{/lt}">
                         <div class="item-heading">
                             <div class="pull-right">
-                                入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场点">{$vo.open|default="0"}</a> &nbsp;
-                                平仓价 <a href="javascript:;" class="my-editable" data-type="text" data-name="close" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="出场点">{$vo.close|default="0"}</a> &nbsp;
-                                浮亏数 <a href="javascript:;" class="my-editable" data-type="text" data-name="power" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="浮亏数">{$vo.power|default="0"}</a>
+                                入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场点价位">{$vo.open|default="0"}</a> &nbsp;
+                                平仓价 <a href="javascript:;" class="my-editable" data-type="text" data-name="close" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="出场价位">{$vo.close|default="0"}</a> &nbsp;
+                                浮亏数 <a href="javascript:;" class="my-editable" data-type="text" data-name="power" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="浮亏金额或点数">{$vo.power|default="0"}</a>
                             </div>
                             <h4>
                                 {egt name="vo.type" value="0"}
@@ -30,7 +34,7 @@
                         </div>
                         <div class="item-content">
                             <div class="text">
-                                <a href="javascript:;" class="my-editable" data-type="textarea" data-name="mark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="总结">{$vo.mark|default="入场理由/交易总结：太懒了，什么都没写"}</a>
+                                <a href="javascript:;" class="my-editable" data-type="textarea" data-name="mark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场理由/交易总结">{$vo.mark|default="入场理由/交易总结：太懒了，什么都没写"}</a>
                             </div>
                         </div>
                         <div class="item-footer">
@@ -50,9 +54,16 @@
 {block name="script"}
 {load href="/dist/css/bootstrap-editable.css,/dist/js/bootstrap-editable.min.js" /}
 <script>
-//修改内容
-$('.my-editable').editable({
-    mode:'inline'
+// 点击按钮时显示漂浮消息
+$('.my-editable').on('click', function() {
+    //修改内容
+    $(this).editable({
+        mode:'inline'
+    });
+    new $.zui.Messager($(this).data('title'), {
+        icon: 'bell',
+        placement: 'bottom-right'
+    }).show();
 });
 </script>
 {/block}
