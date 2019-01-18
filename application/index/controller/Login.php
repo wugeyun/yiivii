@@ -83,6 +83,7 @@ class Login extends Controller {
                 $info->lastget = '';
                 $info->save();
                 $data['code'] = 200;
+                $data['url'] = url('member/index');
             }else{
                 $data['code'] = 500;
             }
