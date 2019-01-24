@@ -62,6 +62,7 @@ class Member extends Common {
         if($term){
             $list = Tags::field('name')
                 ->where('name','like',"%$term%")
+                ->order('name desc')
                 ->column('name');
             return json($list);
         }
