@@ -12,7 +12,7 @@
             </div>
             <div class="panel">
                 <div class="panel-heading">最新订单 <i class="icon icon-spin icon-spinner-snake"></i></div>
-                <div class="list-group">
+                <div class="list-group scrollbar-hover" style="height: 200px;overflow: auto;">
                     {volist name="list" id="vo"}
                     <a href="javascript:;" class="list-group-item" data-toggle="tooltip" data-placement="top" title="{$vo.open|default='--'} / {$vo.close|default='--'}">
                         <span class="label label-primary">{:date('Y-m-d',$vo.create_time)}</span>
