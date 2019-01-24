@@ -18,6 +18,8 @@
         .my-mt0 {margin-top: 0px;}
         .my-pt20 {padding-top: 20px;}
         .input-control-label-right {width: 150px;}
+        #back-to-top {display:none;position: fixed;right: 10px;bottom: 10px;background: rgba(244, 100, 95, 0.6);color: #ffffff;text-align: center;border-radius: 2px;z-index: 1;}
+        #back-to-top i {width: 30px;height: 30px;line-height: 30px;}
     </style>
 </head>
 <body>
@@ -68,12 +70,26 @@
         </div>
     </div>
 </div>
+<a href="javascript:;" id="back-to-top"><i class="icon icon-chevron-up icon-2x"></i></a>
 {load href="/dist/lib/jquery/jquery.js,/dist/js/zui.min.js,/dist/lib/bootbox/bootbox.min.js,/dist/js/jquery.lazyload.min.js" /}
 <script>
     //加载img
     $("img.lazy").lazyload({effect: "fadeIn"});
     // 初始化工具提示
     $('[data-toggle="tooltip"]').tooltip();
+    //返回
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('#back-to-top').fadeIn();
+        } else {
+            $('#back-to-top').fadeOut();
+        }
+    });
+    $('#back-to-top').on('click', function(e){
+        e.preventDefault();
+        $('html, body').animate({scrollTop : 0},1000);
+        return false;
+    });
 </script>
 {block name="script"}{/block}
 </body>
