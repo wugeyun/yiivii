@@ -40,7 +40,7 @@ class Member extends Common {
         //总数
         $data['count'] = Order::where('uid',$uid)->count();
         //持仓
-        $data['eq'] = Order::where('uid',$uid)->where('power',0)->count();
+        $data['eq'] = Order::where('uid',$uid)->where('power',0)->where('close','neq','')->count();
         //盈利
         $data['gt'] = Order::where('uid',$uid)->where('power','>',0)->count();
         //亏损
