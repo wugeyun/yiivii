@@ -36,7 +36,10 @@
                         </div>
                         <div class="item-content">
                             <div class="text">
-                                <a href="javascript:;" class="my-editable" data-type="textarea" data-name="mark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场理由/交易总结">{$vo.mark|default="入场理由/交易总结：太懒了，什么都没写"}</a>
+                                <span class="text-muted lead">入场理由：</span><a href="javascript:;" class="my-editable" data-type="textarea" data-name="openmark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场理由">{$vo.openmark|default="太懒了，什么都没写"}</a>
+                            </div>
+                            <div class="text">
+                                <span class="text-muted lead">平仓总结：</span><a href="javascript:;" class="my-editable" data-type="textarea" data-name="closemark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="平仓总结">{$vo.closemark|default="太懒了，什么都没写"}</a>
                             </div>
                         </div>
                         <div class="item-footer">
