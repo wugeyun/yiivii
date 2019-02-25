@@ -22,8 +22,8 @@ class Member extends Common {
         }
         switch ($power){
             case 'eq':
-                $where[] = ['power','=',0];
-                $where[] = ['close','neq',''];
+                $where[] = ['power','eq',0];
+                $where[] = ['close','eq',''];
                 break;
             case 'gt':
                 $where[] = ['power','>',0];
