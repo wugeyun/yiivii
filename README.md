@@ -11,10 +11,11 @@
     * 让每一笔交易都能成为盈利道路的垫脚石；
 
 * 技术要点：
-
-    * Thinkphp5.1 + Bootstrap v3 + ZUI + jQuery；
     * 无密码登录，邮箱即账户，随机验证码登录；
 
+```markdown
+    Thinkphp5.1 + Bootstrap v3 + ZUI + jQuery；
+```
 * 官网地址:
 
     [www.yiivii.com](https://www.yiivii.com)
