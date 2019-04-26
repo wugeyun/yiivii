@@ -21,7 +21,7 @@
 
 ### 项目地址
 
-GitHub地址 [wechatForBrowser](https://github.com/hswddan/yiivii)
+GitHub地址 [yiivii](https://github.com/hswddan/yiivii)
 
 ### 我的GitHub项目
 
