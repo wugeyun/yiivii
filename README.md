@@ -17,4 +17,12 @@
 
 * 官网地址:
 
-    https://www.yiivii.com
+    [www.yiivii.com](https://www.yiivii.com)
+
+### 项目地址
+
+GitHub地址 [wechatForBrowser](https://github.com/hswddan/yiivii)
+
+### 我的GitHub项目
+
+欢迎关注我的开源项目 [hswddan](https://github.com/hswddan) 
