@@ -12,6 +12,7 @@
 namespace think\model\concern;
 
 use InvalidArgumentException;
+use think\db\Expression;
 use think\Exception;
 use think\Loader;
 use think\model\Relation;
@@ -370,9 +371,7 @@ trait Attribute
             switch ($type) {
                 case 'datetime':
                 case 'date':
-                    $format = !empty($param) ? $param : $this->dateFormat;
-                    $format .= strpos($format, 'u') || false !== strpos($format, '\\') ? '' : '.u';
-                    $value = $this->formatDateTime($format);
+                    $value = $this->formatDateTime('Y-m-d H:i:s.u');
                     break;
                 case 'timestamp':
                 case 'integer':
@@ -385,8 +384,7 @@ trait Attribute
             'date',
             'timestamp',
         ])) {
-            $format = strpos($this->dateFormat, 'u') || false !== strpos($this->dateFormat, '\\') ? '' : '.u';
-            $value  = $this->formatDateTime($this->dateFormat . $format);
+            $value = $this->formatDateTime('Y-m-d H:i:s.u');
         } else {
             $value = time();
         }
@@ -405,6 +403,10 @@ trait Attribute
     {
         if (is_null($value)) {
             return;
+        }
+
+        if ($value instanceof Expression) {
+            return $value;
         }
 
         if (is_array($type)) {
@@ -433,9 +435,8 @@ trait Attribute
                 }
                 break;
             case 'datetime':
-                $format = !empty($param) ? $param : $this->dateFormat;
-                $value  = is_numeric($value) ? $value : strtotime($value);
-                $value  = $this->formatDateTime($format, $value);
+                $value = is_numeric($value) ? $value : strtotime($value);
+                $value = $this->formatDateTime('Y-m-d H:i:s.u', $value);
                 break;
             case 'object':
                 if (is_object($value)) {
