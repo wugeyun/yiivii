@@ -112,6 +112,6 @@ class Member extends Common {
         //写入更新
         $order->$name = $value;
         $order->save();
-        return json(['status'=>'ok','value'=>$name]);
+        return json(['status'=>'ok','value'=>$order->$name]);
     }
 }
