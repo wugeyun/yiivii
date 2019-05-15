@@ -21,9 +21,15 @@
                     <div class="item {lt name='vo.power' value='0'}text-danger{/lt}{gt name='vo.power' value='0'}text-success{/gt}">
                         <div class="item-heading">
                             <div class="pull-right">
-                                入场价 <a href="javascript:;" class="my-editable" data-type="text" data-name="open" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场价位">{$vo.open|default="0"}</a> &nbsp;
-                                平仓价 <a href="javascript:;" class="my-editable" data-type="text" data-name="close" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="出场价位">{$vo.close|default="0"}</a> &nbsp;
-                                盈亏数 <a href="javascript:;" class="my-editable" data-type="text" data-name="power" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="浮亏金额或点数">{$vo.power|default="0"}</a>
+                                入场价 <a href="javascript:;" class="my-bootbox" data-type="text" data-name="open" data-pk="{$vo.id}" data-value="{$vo.open}" data-title="入场价位">
+                                <span class="my-value">{$vo.open|default="null"}</span>
+                            </a> &nbsp;
+                                平仓价 <a href="javascript:;" class="my-bootbox" data-type="text" data-name="close" data-pk="{$vo.id}" data-value="{$vo.close}" data-title="出场价位">
+                                <span class="my-value">{$vo.close|default="null"}</span>
+                            </a> &nbsp;
+                                盈亏数 <a href="javascript:;" class="my-bootbox" data-type="text" data-name="power" data-pk="{$vo.id}" data-value="{$vo.power}" data-title="浮亏金额或点数,如50或者-50">
+                                <span class="my-value">{$vo.power|default="null"}</span>
+                            </a>
                             </div>
                             <h4>
                                 {egt name="vo.type" value="0"}
@@ -36,10 +42,16 @@
                         </div>
                         <div class="item-content">
                             <div class="text">
-                                <span class="text-muted lead">入场理由：</span><a href="javascript:;" class="my-editable" data-type="textarea" data-name="openmark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="入场理由">{$vo.openmark|default="太懒了，什么都没写"}</a>
+                                <span class="text-muted lead">入场理由：</span>
+                                <a href="javascript:;" class="my-bootbox" data-type="textarea" data-name="openmark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-value="{$vo.openmark}" data-title="写几句支持你入场的理由">
+                                    <span class="my-value">{$vo.openmark|default="太懒了，什么都没写"}</span>
+                                </a>
                             </div>
                             <div class="text">
-                                <span class="text-muted lead">平仓总结：</span><a href="javascript:;" class="my-editable" data-type="textarea" data-name="closemark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-title="平仓总结">{$vo.closemark|default="太懒了，什么都没写"}</a>
+                                <span class="text-muted lead">平仓总结：</span>
+                                <a href="javascript:;" class="my-bootbox" data-type="textarea" data-name="closemark" data-url="{:url('member/edit')}" data-pk="{$vo.id}" data-value="{$vo.closemark}" data-title="写一段刻苦铭心的平仓总结">
+                                    <span class="my-value">{$vo.closemark|default="太懒了，什么都没写"}</span>
+                                </a>
                             </div>
                         </div>
                         <div class="item-footer">
@@ -60,6 +72,7 @@
 {load href="/dist/css/bootstrap-editable.css,/dist/js/bootstrap-editable.min.js" /}
 <script>
     //修改内容
+    /**
     $('.my-editable').editable({
         mode:'inline'
     });
@@ -70,6 +83,37 @@
             type: 'danger',
             placement: 'bottom-right'
         }).show();
+    });
+    **/
+    //消息窗
+    var myMessager = new $.zui.Messager({icon:'warning-sign',type:'special'});
+    $('.my-bootbox').on('click', function(){
+        //定义变量
+        var a = $(this);
+        var pk = a.data('pk');//id
+        var title = a.data('title');//标题
+        var type = a.data('type') ? a.data('type') : 'text';//类型
+        var setvalue = a.data('value') ? a.data('value') : '';//字段名
+        var name = a.data('name');//字段名
+        //开始弹出
+        bootbox.prompt({size:"small", title:title,value:setvalue, inputType:type, callback: function (value) {
+                if(value){
+                    $.post("{:url('member/edit')}",{pk:pk, name:name, value:value},function(data){
+                        if(data.status == 'ok'){
+                            myMessager.show('操作成功');
+                            //是否修改页面
+                            if(data.value){
+                                a.find('.my-value').html(data.value);
+                            }
+                        }else{
+                            myMessager.show('操作失败');
+                        }
+                    });
+                }else{
+                    myMessager.show('放弃修改');
+                }
+            }
+        });
     });
 </script>
 {/block}

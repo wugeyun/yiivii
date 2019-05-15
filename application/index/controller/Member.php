@@ -93,11 +93,25 @@ class Member extends Common {
      * @param $name
      * @param $value
      */
-    public function edit($pk,$name,$value){
-        if($pk){
-            Order::update(['id'=>$pk,$name => $value]);
-        }else{
-            $this->error('非法请求');
+    public function edit(){
+        //过滤
+        $pk = trim(input('post.pk'));
+        $name = trim(input('post.name'));
+        $value = trim(input('post.value'));
+        //uid
+        $uid = session('uid');
+        $order = Order::get($pk);
+        //空值验证
+        if(empty($order)){
+            return json(['status'=>'error']);
         }
+        //身份验证
+        if($uid != $order->uid){
+            return json(['status'=>'error']);
+        }
+        //写入更新
+        $order->$name = $value;
+        $order->save();
+        return json(['status'=>'ok','value'=>$name]);
     }
 }
