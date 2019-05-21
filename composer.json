@@ -18,7 +18,8 @@
     "require": {
         "php": ">=5.6.0",
         "topthink/framework": "5.1.*",
-        "phpmailer/phpmailer": "^6.0"
+        "phpmailer/phpmailer": "^6.0",
+        "jaeger/querylist": "^4.1"
     },
     "autoload": {
         "psr-4": {
