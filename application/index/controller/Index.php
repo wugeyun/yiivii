@@ -53,6 +53,6 @@ class Index extends Common
         $ql->setHtml($html);
         $data = $ql->find('#curr_table')->html();
         cache('pp_'.$t, $data);
-        dump(cache('pp_'.$t));
+        echo date('Y-m-d H:i:s');
     }
 }
