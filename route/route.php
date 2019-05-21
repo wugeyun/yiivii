@@ -11,4 +11,5 @@
 
 //首页
 Route::rule('/', 'index/index');
+Route::rule('currencies/[:id]', 'index/index');
 Route::rule('u', 'member/index');

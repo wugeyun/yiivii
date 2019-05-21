@@ -2,7 +2,7 @@
 {block name="content"}
 <div class="container">
     <div class="row">
-        <div class="col-md-4 pull-right">
+        <div class="col-md-8">
             <div class="visible-xs">
                 {eq name="Think.session.status" value="1001"}
                 <h3 class="text-red my-mt0"><a href="{:url('member/index')}" class="btn btn-danger">查看我的交易记录 {gt name="count" value="0"}<span class="label label-badge">{$count}</span>{/gt}</a> <small>坚持总结就有收获</small> <i class="icon icon-thumbs-o-up"></i></h3>
@@ -10,74 +10,13 @@
                 <h3 class="text-red my-mt0"><a href="javascript:;" data-remote="{:url('login/index')}" data-show-header="false" data-toggle="modal" data-backdrop="false" class="btn btn-danger">立即登记</a> 开始锻造你的成功交易密码 <i class="icon icon-key"></i></h3>
                 {/eq}
             </div>
-            <div class="panel">
-                <div class="panel-heading">最新订单 <i class="icon icon-spin icon-spinner-snake"></i></div>
-                <div class="list-group scrollbar-hover" style="height: 200px;overflow: auto;">
-                    {volist name="list" id="vo"}
-                    <a href="javascript:;" class="list-group-item" data-toggle="tooltip" data-placement="top" title="{$vo.open|default='--'} / {$vo.close|default='--'}">
-                        <span class="label label-primary">{:date('Y-m-d',$vo.create_time)}</span>
-                        <span class="label">{$vo.tag}</span>
-                        {egt name="vo.type" value="0"}
-                        <span class="label label-badge label-danger"><i class="icon icon-level-up"></i></span>
-                        {else/}
-                        <span class="label label-badge label-success"><i class="icon icon-level-down"></i></span>
-                        {/egt}
-                    </a>
-                    {/volist}
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-heading">推荐工具 <i class="icon icon-key"></i></div>
-                <div class="panel-body">
-                    <button class="btn btn-block btn-{:get_color()}" type="button" data-iframe="https://tickmill.autochartist.com/to/?broker_id=520&account_type=LIVE&user=595733&token=a9f5e6296b5b780520ae4c12935bd6d4&locale=zh" data-icon="dollar" data-toggle="modal" data-size="fullscreen">
-                        交易信号
-                        <i class="icon icon-rss"></i>
-                    </button>
-                    <button class="btn btn-block btn-{:get_color()}" type="button" data-iframe="https://www.jin10.com/example/jin10.com.html" data-icon="volume-up" data-toggle="modal" data-size="fullscreen">
-                        财经资讯
-                        <i class="icon icon-volume-up"></i>
-                    </button>
-                    <button class="btn btn-block btn-{:get_color()}" type="button" data-iframe="https://rili-d.jin10.com/open.php" data-icon="bell-alt" data-toggle="modal" data-size="fullscreen">
-                        财经日历
-                        <i class="icon icon-bell-alt"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-heading">
-                    <a href="http://open.wugemang.com" target="_blank" class="small pull-right">更多精品 <i class="icon icon-long-arrow-right"></i></a>
-                    推荐图书 <i class="icon icon-book"></i>
-                </div>
-                <div class="panel-body">
-                    <div class="cards cards-borderless">
-                        <div class="col-md-6 col-xs-6">
-                            <a class="card" href="http://xiong.yiivii.com" target="_blank">
-                                <img src="https://box.kancloud.cn/fb1c3b3f6689b5978542a8a5ee3a8ede_865x1155.jpg" alt="小熊K线形态">
-                                <div class="caption">突破交易</div>
-                                <div class="card-heading"><strong>小熊K线形态</strong></div>
-                                <div class="card-content text-muted">详细记录100+已成功验证的交易形态</div>
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-xs-6">
-                            <a class="card" href="http://harmonic.yiivii.com" target="_blank">
-                                <img src="https://box.kancloud.cn/cfc96140589ce1912b0e0313f5b4ac99_384x499.jpg" alt="谐波交易">
-                                <div class="caption">蝴蝶理论</div>
-                                <div class="card-heading"><strong>谐波交易</strong></div>
-                                <div class="card-content text-muted">详解《和谐交易》中的蝴蝶理论交易形态</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8 pull-left">
             <div class="alert alert-danger alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h3><b>枢轴点</b>在交易中的重要性</h3>
                 <p>枢轴点，支撑和阻力计算方法,被广泛应用为最简单最有效的交易策略。</p>
-                <p>枢轴点，受广大业内交易员,银行,金融机构所信任青睐，被用做金融市场的明确指标，它们被用于最基础的技术分析。</p>
+                <p>受广大业内交易员,银行,金融机构所信任青睐，被用做金融市场的明确指标，它们被用于最基础的技术分析。</p>
                 <p>枢轴点，同时也是汇市由牛市到熊市变化的标志点。</p>
-                <p><i class="icon icon-bell-alt"></i> 本站用户每天将免费收到一份当日枢轴点信息邮件。</p>
+                <p class="text-info"><i class="icon icon-bell-alt"></i> 本站用户每天将免费收到一份当日枢轴点信息邮件。</p>
                 <button type="button" class="btn btn-default" style="margin-top: 15px;" data-remote="{:url('index/pp',['t'=>'day'])}" data-size="lg" data-icon="star" data-title="今日枢轴点" data-toggle="modal">今日枢轴点</button>
                 <button type="button" class="btn btn-default" style="margin-top: 15px;" data-remote="{:url('index/pp',['t'=>'week'])}" data-size="lg" data-icon="star" data-title="今日枢轴点" data-toggle="modal">本周枢轴点</button>
             </div>
@@ -172,6 +111,67 @@
                 </div>
             </div>
             {/neq}
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-heading">最新订单 <i class="icon icon-spin icon-spinner-snake"></i></div>
+                <div class="list-group scrollbar-hover" style="height: 200px;overflow: auto;">
+                    {volist name="list" id="vo"}
+                    <a href="javascript:;" class="list-group-item" data-toggle="tooltip" data-placement="top" title="{$vo.open|default='--'} / {$vo.close|default='--'}">
+                        <span class="label label-primary">{:date('Y-m-d',$vo.create_time)}</span>
+                        <span class="label">{$vo.tag}</span>
+                        {egt name="vo.type" value="0"}
+                        <span class="label label-badge label-danger"><i class="icon icon-level-up"></i></span>
+                        {else/}
+                        <span class="label label-badge label-success"><i class="icon icon-level-down"></i></span>
+                        {/egt}
+                    </a>
+                    {/volist}
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">推荐工具 <i class="icon icon-key"></i></div>
+                <div class="panel-body">
+                    <button class="btn btn-block btn-{:get_color()}" type="button" data-iframe="https://tickmill.autochartist.com/to/?broker_id=520&account_type=LIVE&user=595733&token=a9f5e6296b5b780520ae4c12935bd6d4&locale=zh" data-icon="dollar" data-toggle="modal" data-size="fullscreen">
+                        交易信号
+                        <i class="icon icon-rss"></i>
+                    </button>
+                    <button class="btn btn-block btn-{:get_color()}" type="button" data-iframe="https://www.jin10.com/example/jin10.com.html" data-icon="volume-up" data-toggle="modal" data-size="fullscreen">
+                        财经资讯
+                        <i class="icon icon-volume-up"></i>
+                    </button>
+                    <button class="btn btn-block btn-{:get_color()}" type="button" data-iframe="https://rili-d.jin10.com/open.php" data-icon="bell-alt" data-toggle="modal" data-size="fullscreen">
+                        财经日历
+                        <i class="icon icon-bell-alt"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <a href="http://open.wugemang.com" target="_blank" class="small pull-right">更多精品 <i class="icon icon-long-arrow-right"></i></a>
+                    推荐图书 <i class="icon icon-book"></i>
+                </div>
+                <div class="panel-body">
+                    <div class="cards cards-borderless">
+                        <div class="col-md-6 col-xs-6">
+                            <a class="card" href="http://xiong.yiivii.com" target="_blank">
+                                <img src="https://box.kancloud.cn/fb1c3b3f6689b5978542a8a5ee3a8ede_865x1155.jpg" alt="小熊K线形态">
+                                <div class="caption">突破交易</div>
+                                <div class="card-heading"><strong>小熊K线形态</strong></div>
+                                <div class="card-content text-muted">详细记录100+已成功验证的交易形态</div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <a class="card" href="http://harmonic.yiivii.com" target="_blank">
+                                <img src="https://box.kancloud.cn/cfc96140589ce1912b0e0313f5b4ac99_384x499.jpg" alt="谐波交易">
+                                <div class="caption">蝴蝶理论</div>
+                                <div class="card-heading"><strong>谐波交易</strong></div>
+                                <div class="card-content text-muted">详解《和谐交易》中的蝴蝶理论交易形态</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
