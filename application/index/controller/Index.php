@@ -30,7 +30,18 @@ class Index extends Common
     }
 
     /**
-     * 获取pp
+     * 枢轴点show
+     * @param $t
+     * @return mixed
+     */
+    public function pp($t)
+    {
+        $data['pp'] = cache('pp_'.$t) ?: '数据加载中...';
+        return view('',$data);
+    }
+
+    /**
+     * 设置pp
      * 86400 每日
      * week 每周
      */
