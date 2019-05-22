@@ -50,14 +50,13 @@ class Index extends Common
         //写入缓存，时间3600
         Cache::remember('baike',function() use ($url){
             $ql = QueryList::get($url);
-            $css = $ql->find('link')->attrs('href');
-            $baike['css'] = $css;
+            $css = $ql->find('link[type="text/css"]')->attrs('href');
+            $baike['css'] = implode(",", $css);
             $baike['content'] = $ql->find('.main-content')->html();
             return $baike;
         },3600);
         $data['url'] = $url;
         $data['baike'] = Cache::get('baike') ?: '数据加载中...';
-        dump($data['baike']['css']);
         return view('',$data);
     }
 
