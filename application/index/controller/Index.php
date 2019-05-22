@@ -45,7 +45,6 @@ class Index extends Common
      */
     public function baike()
     {
-        Cache::rm('baike');
         $url = 'https://baike.baidu.com/item/%E6%9E%A2%E8%BD%B4%E7%82%B9/6689552';
         //写入缓存，时间3600
         Cache::remember('baike',function() use ($url){
