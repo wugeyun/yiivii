@@ -35,7 +35,7 @@ class Index extends Common
      */
     public function pp($t)
     {
-        $data['pp'] = Cache::get('pp_'.$t) ?: '数据加载中...';
+        $data['pp'] = Cache::get('pp_'.$t,'数据加载中...');
         return view('',$data);
     }
 
