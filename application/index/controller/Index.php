@@ -51,8 +51,8 @@ class Index extends Common
         Cache::remember('baike',function() use ($url){
             $ql = QueryList::get($url);
             $css = $ql->find('link[rel="stylesheet"]')->attrs('href');
-            dump($css);
             $baike['css'] = implode(",", $css);
+            echo $baike['css'];
             $baike['content'] = $ql->find('.main-content')->html();
             return $baike;
         },3600);
