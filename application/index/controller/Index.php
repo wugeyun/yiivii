@@ -2,7 +2,7 @@
 namespace app\index\controller;
 
 use think\Controller;
-use think\Cache;
+use think\facade\Cache;
 use QL\QueryList;
 use app\common\model\Order;
 use app\common\controller\Common;
