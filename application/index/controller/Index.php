@@ -17,8 +17,6 @@ class Index extends Common
         $count = Order::where('uid',session('uid'))->count();
         $data['count'] = $count;
         $data['list'] = $list;
-        $data['pp_day'] = cache('pp_day') ?: '数据加载中...';
-        $data['pp_week'] = cache('pp_week') ?: '数据加载中...';
         return view('',$data);
     }
 
