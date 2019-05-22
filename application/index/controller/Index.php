@@ -57,7 +57,6 @@ class Index extends Common
         },3600);
         $data['url'] = $url;
         $data['baike'] = Cache::get('baike') ?: '数据加载中...';
-        print_r($data['baike']['css']);
         return view('',$data);
     }
 
