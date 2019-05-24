@@ -74,7 +74,7 @@ class Index extends Common
         $data = $ql->find('#curr_table')->html();
         $cache_name = 'pp_' . $c . $t;
         Cache::set($cache_name, $data);
-        echo $cache_name . 'set ok at ';
+        echo $cache_name . ' set ok at ';
         echo date('Y-m-d H:i:s');
     }
 }
