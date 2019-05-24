@@ -61,15 +61,20 @@ class Index extends Common
      * 设置pp
      * 86400 每日
      * week 每周
+     * c 为商品货币 默认 commodities
      */
-    public function set_pp($t = 'day')
+    public function set_pp($t = 'day', $c = '')
     {
         $post['period'] =  $t == 'day' ? '86400' : 'week';
-        $html = callapi('https://www.yiivii.com/investing/technical/pivot-points',$post);
+        if ($c != '') {
+            $c .= '-';
+        }
+        $html = callapi('https://www.yiivii.com/investing/technical/' . $c . 'pivot-points', $post);
         $ql = QueryList::html($html);
         $data = $ql->find('#curr_table')->html();
-        Cache::set('pp_'.$t, $data);
-        echo 'set pp ok ';
+        $cache_name = 'pp_' . $c . $t;
+        Cache::set($cache_name, $data);
+        echo $cache_name . 'set ok at ';
         echo date('Y-m-d H:i:s');
     }
 }
