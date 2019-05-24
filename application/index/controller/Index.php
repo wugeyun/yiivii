@@ -51,7 +51,7 @@ class Index extends Common
             $ql = QueryList::get($url);
             $baike = $ql->find('.main-content')->html();
             return $baike;
-        },3600);
+        },3600*24);
         $data['url'] = $url;
         $data['baike'] = Cache::get('baike') ?: '数据加载中...';
         return view('',$data);
