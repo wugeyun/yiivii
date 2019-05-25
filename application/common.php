@@ -14,7 +14,8 @@
  * 随机boostrap状态
  * @return mixed
  */
-function get_color(){
+function get_color()
+{
     $data = ['default','primary','success','info','warning','danger'];
     $key = array_rand($data,1);
     return $data[$key];
@@ -26,7 +27,8 @@ function get_color(){
  * $from 正文底部来源
  * $base_content 正文内容
  */
-function setEmailContent($base_content = '邮件正文内容...',$title = '伊娃交易登陆码'){
+function setEmailContent($base_content = '邮件正文内容...',$title = '伊娃交易登陆码')
+{
     $content = '<table border="0" width="100%" cellspacing="0" cellpadding="0" style="background-color:#f7f9fa;padding-top:20px;padding-bottom:30px;">';
     $content .= '<tr>';
     $content .= '<td align="center" style="background-color: #F7F9FA" width="100%">';
@@ -57,45 +59,57 @@ function setEmailContent($base_content = '邮件正文内容...',$title = '伊�
  * $title 邮件标题
  * $content 邮件内容
  */
-function sendMail($content = '',$to = 'hswddan@qq.com',$title = '伊娃系统通知'){
+function sendMail($content = '',$to = 'hswddan@qq.com',$title = '伊娃系统通知')
+{
     //邮件设置
     $mail = new \PHPMailer\PHPMailer\PHPMailer;
     try {
         // 服务器设置
-        //$mail->SMTPDebug = 2;     // 开启Debug
-        $mail->isSMTP();        // 使用SMTP
-        $mail->SMTPAuth = true;     // 开启SMTP验证
-        $mail->SMTPSecure = 'ssl';      // 开启TLS 可选
-        $mail->Host = 'smtp.exmail.qq.com';     // 服务器地址 smtp.exmail.qq.com
-        $mail->Username = config('email.Username');     // SMTP 用户名
-        $mail->Password = config('email.Password');     // SMTP 密码
-        $mail->Port = 465;      // 端口
-        $mail->setFrom('system@yiivii.com', '伊娃系统通知');      // 来自
-        $mail->addReplyTo('system@yiivii.com', '收件人');      // 回复地址
-        $mail->addAddress($to);
-        //$mail->addAddress($to);       // 可以只传邮箱地址
-        //$mail->ConfirmReadingTo = 'hswddan@qq.com';       //回执
-        // $mail->addCC('cc@example.com');
-        // $mail->addBCC('bcc@example.com');
-        // 附件
-        //$mail->addAttachment('/var/tmp/file.tar.gz');     // 添加附件
-        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');        // 可以设定名字
-        // 内容
-        $mail->isHTML(true);        // 设置邮件格式为HTML
-        $mail->Subject = "=?UTF-8?B?".base64_encode($title)."?=";
-        $mail->CharSet  = "UTF-8";
-        $mail->Body    = $content;
-        $mail->AltBody = '收件人(https://www.yiivii.com)';     //邮件正文不支持HTML的备用显示
-        $mail->send();
-    } catch (Exception $e) {
+        //Server settings
+        //$mail->SMTPDebug = 2;                                       // Enable verbose debug output
+        $mail->isSMTP();                                            // Set mailer to use SMTP
+        $mail->Host       = 'smtp.exmail.qq.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+        $mail->Username   = config('email.Username');                     // SMTP username
+        $mail->Password   = config('email.Password');                               // SMTP password
+        $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption, `ssl` also accepted
+        $mail->Port       = 465;                                    // TCP port to connect to
 
+        //Recipients
+        $mail->setFrom('system@yiivii.com', '伊娃系统通知');
+        //$mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
+        $mail->addAddress($to);               // Name is optional
+        //$mail->addReplyTo('info@example.com', 'Information');
+        //$mail->addCC('cc@example.com');
+        //$mail->addBCC('bcc@example.com');
+
+        // Attachments
+        //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+        // Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = "=?UTF-8?B?".base64_encode($title)."?=";
+        $mail->CharSet = "UTF-8";
+        $mail->Body    = $content;
+        $mail->AltBody = '收件人(https://www.yiivii.com)';
+
+        $status = $mail->send();
+        if ($status) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception $e) {
+        return false;
     }
 }
 /**
  * 提交curl请求
  * api
  */
-function callapi($url,$post = null) {
+function callapi($url,$post = null)
+{
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
