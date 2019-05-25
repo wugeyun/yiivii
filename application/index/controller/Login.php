@@ -50,7 +50,10 @@ class Login extends Controller {
                     $mail_content .= '<p>有效时间【'.$wait.' 秒】</p>';
                     $mail_content .= '<p>有效期至【'.date('Y-m-d H:i:s',time() + $wait).'】</p>';
                     $this_content = setEmailContent($mail_content);
-                    sendMail($this_content,$email);
+                    //子进程发送邮件通知
+                    if (pcntl_fork() == 0) {
+                        sendMail($this_content,$email);
+                    }
                     break;
                 default:
                     $data['code'] = 500;
