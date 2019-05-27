@@ -79,16 +79,21 @@ class Index extends Common
         echo $cache_name . ' set ok at ';
         echo date('Y-m-d H:i:s');
     }
+
+    /**
+     * 每日daily
+     * @param int $bcc
+     * @return string
+     */
     public function daily($bcc = 0)
     {
-        if ($bcc) {
-            $list = Member::column('email');
-        }
+        $list = $bcc ? Member::column('email') : ['260258959@qq.com'];
         $str = email_daily_body($title = '商品类今日枢轴点', $content = Cache::get('pp_commodities-day'));
         $str .= email_daily_body($title = '货币类今日枢轴点', $content = Cache::get('pp_day'));
         $str .= email_daily_body($title = '商品类本周枢轴点', $content = Cache::get('pp_commodities-week'));
         $str .= email_daily_body($title = '货币类本周枢轴点', $content = Cache::get('pp_week'));
-        sendMail($content = $str, $to = 'wuge500@vip.qq.com', $title = '最牛逼的交易数据[' . date('Y-m-d') . ']');
+        $str .= email_daily_footer();
+        sendMail($content = $str, $to = 'wuge500@vip.qq.com', $title = '最牛逼的交易数据[' . date('Y-m-d') . ']', $bcc = $list);
         return 'send daily success';
     }
 }

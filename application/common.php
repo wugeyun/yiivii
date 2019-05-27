@@ -59,7 +59,7 @@ function setEmailContent($base_content = '邮件正文内容...',$title = '伊�
  * $title 邮件标题
  * $content 邮件内容
  */
-function sendMail($content = '',$to = 'hswddan@qq.com',$title = '伊娃系统通知')
+function sendMail($content = '', $to = 'hswddan@qq.com', $title = '伊娃系统通知', $bcc = [])
 {
     //邮件设置
     $mail = new \PHPMailer\PHPMailer\PHPMailer;
@@ -81,6 +81,11 @@ function sendMail($content = '',$to = 'hswddan@qq.com',$title = '伊娃系统通
         $mail->addAddress($to);               // Name is optional
         //$mail->addReplyTo('info@example.com', 'Information');
         //$mail->addCC('cc@example.com');
+        if (!empty($bcc)) {
+            foreach ($bcc as $c) {
+                $mail->addBCC($c);
+            }
+        }
         //$mail->addBCC('bcc@example.com');
 
         // Attachments
