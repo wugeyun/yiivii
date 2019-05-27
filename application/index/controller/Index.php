@@ -93,7 +93,7 @@ class Index extends Common
         $str .= email_daily_body($title = '商品类本周枢轴点', $content = Cache::get('pp_commodities-week'));
         $str .= email_daily_body($title = '货币类本周枢轴点', $content = Cache::get('pp_week'));
         $str .= email_daily_footer();
-        sendMail($content = $str, $to = 'wuge500@vip.qq.com', $title = '最牛逼的交易数据[' . date('Y-m-d') . ']', $bcc = $list);
+        sendMail($content = $str, $to = 'wuge500@vip.qq.com', $title = '最牛逼的交易数据 [' . date('Y-m-d') . ']', $bcc = $list);
         return 'send daily success';
     }
 }
