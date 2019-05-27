@@ -6,6 +6,8 @@ use think\facade\Cache;
 use QL\QueryList;
 use app\common\model\Order;
 use app\common\controller\Common;
+use app\common\model\Member;
+
 class Index extends Common
 {
     /**
@@ -76,5 +78,17 @@ class Index extends Common
         Cache::set($cache_name, $data);
         echo $cache_name . ' set ok at ';
         echo date('Y-m-d H:i:s');
+    }
+    public function daily($bcc = 0)
+    {
+        if ($bcc) {
+            $list = Member::column('email');
+        }
+        $str = email_daily_body($title = '商品类今日枢轴点', $content = Cache::get('pp_commodities-day'));
+        $str .= email_daily_body($title = '货币类今日枢轴点', $content = Cache::get('pp_day'));
+        $str .= email_daily_body($title = '商品类本周枢轴点', $content = Cache::get('pp_commodities-week'));
+        $str .= email_daily_body($title = '货币类本周枢轴点', $content = Cache::get('pp_week'));
+        sendMail($content = $str, $to = 'wuge500@vip.qq.com', $title = '最牛逼的交易数据[' . date('Y-m-d') . ']');
+        return 'send daily success';
     }
 }

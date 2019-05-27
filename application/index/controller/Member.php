@@ -1,11 +1,14 @@
 <?php
 namespace app\index\controller;
+
 use think\Controller;
 use app\common\controller\Common;
 use app\common\model\Order;
 use app\common\model\Tags;
 use app\common\model\Member as MemberModel;
-class Member extends Common {
+
+class Member extends Common
+{
     protected function initialize(){
         if(session('status') != 1001){
             $this->error('请使用Email登陆');
@@ -14,7 +17,8 @@ class Member extends Common {
     /**
      * @return mixed
      */
-    public function index($tag = '',$power = '') {
+    public function index($tag = '',$power = '')
+    {
         $uid = session('uid');
         $where[] = ['uid','=',$uid];
         if($tag != ''){
@@ -52,14 +56,16 @@ class Member extends Common {
     /**
      * @return mixed
      */
-    public function add(){
+    public function add()
+    {
         return view('');
     }
 
     /**
      * @return mixed
      */
-    public function getdata($term = ''){
+    public function getdata($term = '')
+    {
         if($term){
             $list = Tags::field('name')
                 ->where('name','like',"%$term%")
@@ -71,7 +77,8 @@ class Member extends Common {
     /**
      * 新增订单
      */
-    public function order($type = ''){
+    public function order($type = '')
+    {
         if($type == ''){
             $this->error('请选择多空选项');
         }
@@ -87,13 +94,13 @@ class Member extends Common {
             $this->error('非法请求');
         }
     }
+
     /**
      * 更新
-     * @param $pk
-     * @param $name
-     * @param $value
+     * @return mixed
      */
-    public function edit(){
+    public function edit()
+    {
         //过滤
         $pk = trim(input('post.pk'));
         $name = trim(input('post.name'));

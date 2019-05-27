@@ -124,3 +124,75 @@ function callapi($url,$post = null)
     curl_close($curl);
     return $output;
 }
+
+/**
+ * dail邮件内容构造
+ * @param string $title
+ * @param string $content
+ * @return string
+ */
+function email_daily_body($title = '标题', $content = '内容')
+{
+    $str = <<<HTML
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+	<tr>
+		<td bgcolor="#f7f9fa" align="center" style="padding:22px 0 15px 0" class="responsive-table">
+			<table width="300" border="0" cellpadding="0" cellspacing="0" style="border-radius:10px; border:1px solid #dedede; margin:0 auto; background-color:#ffffff;" class="responsive-table">
+				<tbody>
+				<tr>
+					<td align="center">
+						$title
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+	<tr>
+		<td bgcolor="#f7f9fa" align="center" style="padding:5px 0 15px 0" class="responsive-table">
+			<table width="650" border="1" cellpadding="1" cellspacing="0" style="border-radius:10px; border:1px solid #dedede; margin:0 auto; background-color:#ffffff;" class="responsive-table">
+				$content
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+HTML;
+    return $str;
+}
+
+/**
+ * dail邮件底部构造
+ * @return string
+ */
+function email_daily_footer()
+{
+    $year = date('Y-m-d');
+    $str = <<<HTML
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	<tbody>
+	<tr>
+		<td bgcolor="#f7f9fa" align="center">
+			<table width="550" border="0" cellpadding="0" cellspacing="0" align="center" class="responsive-table">
+				<tbody>
+				<tr>
+					<td align="center" valign="top" bgcolor="#f7f9fa" style="font-family:Hiragino Sans GB; font-size:12px; color:#b6c2cc; line-height:17px; padding:0 0 25px 0;">
+						这封邮件来自 &nbsp;伊娃交易日志 <br>
+						你可以通过<a href="https://www.yiivii.com.com" style="border:none;color:#8a939b;text-decoration:none;" rel="noopener" target="_blank">&nbsp;www.yiivii.com&nbsp;</a><span>了解枢轴点详细用法</span> <br>
+						(c) $year
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+HTML;
+    return $str;
+}
