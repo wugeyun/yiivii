@@ -188,7 +188,7 @@ function email_daily_footer()
 				<tr>
 					<td align="center" valign="top" bgcolor="#f7f9fa" style="font-family:Hiragino Sans GB; font-size:12px; color:#b6c2cc; line-height:17px; padding:0 0 25px 0;">
 						这封邮件来自 &nbsp;伊娃交易日志 <br>
-						你可以通过<a href="https://www.yiivii.com.com" style="border:none;color:#8a939b;text-decoration:none;" rel="noopener" target="_blank">&nbsp;www.yiivii.com&nbsp;</a><span>了解枢轴点详细用法</span> <br>
+						你可以通过<a href="https://www.yiivii.com" style="border:none;color:#8a939b;text-decoration:none;" rel="noopener" target="_blank">&nbsp;www.yiivii.com&nbsp;</a><span>了解枢轴点详细用法</span> <br>
 						(c) $year
 					</td>
 				</tr>
