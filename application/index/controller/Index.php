@@ -87,7 +87,7 @@ class Index extends Common
      */
     public function daily($bcc = 0)
     {
-        $list = $bcc ? Member::column('email') : ['260258959@qq.com'];
+        $list = $bcc ? Member::where('lastlogin', '>', 0)->column('email') : ['260258959@qq.com'];
         $str = email_daily_body($title = '商品类今日枢轴点', $content = Cache::get('pp_commodities-day'));
         $str .= email_daily_body($title = '货币类今日枢轴点', $content = Cache::get('pp_day'));
         $str .= email_daily_body($title = '商品类本周枢轴点', $content = Cache::get('pp_commodities-week'));
