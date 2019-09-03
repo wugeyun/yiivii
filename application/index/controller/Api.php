@@ -5,7 +5,7 @@ use think\Controller;
 use think\facade\Cache;
 use QL\QueryList;
 
-class Index extends Controller
+class Api extends Controller
 {
     /**
      * @return mixed
