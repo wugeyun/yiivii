@@ -35,6 +35,6 @@ class Api extends Controller
                 ];
             }
         }
-        return json($data);
+        return ['data'=>$data,'code'=>200,'message'=>'操作完成'];
     }
 }
