@@ -26,6 +26,8 @@ class Api extends Controller
         $str = $ql->getHtml();
         //处理
         $data = [];
+        $code = 200;
+        $message = '操作成功';
         $arr = explode("\n",$str);
         foreach($arr as $v){
             $a = explode(" ",$v);
@@ -35,6 +37,10 @@ class Api extends Controller
                 ];
             }
         }
-        return json(['code'=>200,'message'=>'操作完成','data'=>$data]);
+        if (empty($data)) {
+            $code = 500;
+            $message = '操作失败';
+        }
+        return json(['code'=>$code,'message'=>$message,'data'=>$data]);
     }
 }
