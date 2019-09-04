@@ -70,10 +70,7 @@ EOTXT
         $this->assertDumpMatchesFormat(
             <<<'EOTXT'
 Closure($x) {
-%Aparameters: {
-    $x: {}
-  }
-  use: {
+%Ause: {
     $a: 123
     $b: & 123
   }
@@ -92,7 +89,7 @@ EOTXT
         }
         $var = [
             (new \ReflectionMethod($this, __FUNCTION__))->getClosure($this),
-            (new \ReflectionMethod(__CLASS__, 'tearDownAfterClass'))->getClosure(),
+            (new \ReflectionMethod(__CLASS__, 'stub'))->getClosure(),
         ];
 
         $this->assertDumpMatchesFormat(
@@ -103,8 +100,9 @@ array:2 [
     file: "%sReflectionCasterTest.php"
     line: "%d to %d"
   }
-  1 => %sTestCase::tearDownAfterClass() {
-    file: "%sTestCase.php"
+  1 => Symfony\Component\VarDumper\Tests\Caster\ReflectionCasterTest::stub(): void {
+    returnType: "void"
+    file: "%sReflectionCasterTest.php"
     line: "%d to %d"
   }
 ]
@@ -117,7 +115,7 @@ EOTXT
     {
         $var = function &($a = 5) {};
 
-        $this->assertDumpEquals('Closure&($a = 5) { …6}', $var, Caster::EXCLUDE_VERBOSE);
+        $this->assertDumpEquals('Closure&($a = 5) { …5}', $var, Caster::EXCLUDE_VERBOSE);
     }
 
     public function testReflectionParameter()
@@ -246,6 +244,10 @@ Generator {
 }
 EODUMP;
         $this->assertDumpMatchesFormat($expectedDump, $generator);
+    }
+
+    public static function stub(): void
+    {
     }
 }
 

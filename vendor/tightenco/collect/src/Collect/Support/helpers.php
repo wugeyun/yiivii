@@ -2,7 +2,7 @@
 
 use Tightenco\Collect\Support\Arr;
 use Tightenco\Collect\Support\Collection;
-use Tightenco\Collect\Support\Debug\Dumper;
+use Symfony\Component\VarDumper\VarDumper;
 
 if (! class_exists(Illuminate\Support\Collection::class)) {
     if (! function_exists('array_wrap')) {
@@ -110,7 +110,7 @@ if (! class_exists(Illuminate\Support\Collection::class)) {
         function dd(...$args)
         {
             foreach ($args as $x) {
-                (new Dumper)->dump($x);
+               VarDumper::dump($x);
             }
             die(1);
         }
