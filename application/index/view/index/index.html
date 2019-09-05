@@ -133,8 +133,8 @@
             </div>
             {/neq}
         </div>
-        <div class="col-md-4">
-            <div class="panel" data-url="{:url('index/pay')}">
+        <div class="col-md-4" id="dashboard">
+            <div class="panel" data-url="{:url('index/pay')}" data-draggable="false">
                 <div class="panel-heading">实时报价 <i class="icon icon-spin icon-spinner-snake"></i></div>
             </div>
             <div class="panel">
@@ -183,4 +183,10 @@
         </div>
     </div>
 </div>
+{/block}
+{block name="script"}
+{__script__}
+<script>
+    $('#dashboard').dashboard({draggable: true});
+</script>
 {/block}
