@@ -134,9 +134,19 @@
             {/neq}
         </div>
         <div class="col-md-4">
-            <div class="panel" id="dashboard" data-url="{:url('index/pay')}" data-draggable="false">
+            <div class="panel">
                 <div class="panel-heading">实时报价 <i class="icon icon-spin icon-spinner-snake"></i></div>
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        {volist name="paylist" id="vo"}
+                        <a href="javascript:;" class="list-group-item" data-toggle="tooltip" data-placement="top" title="{$key}">
+                            <span class="label label-primary">{:date('Y-m-d H:i:s')}</span>
+                            <span class="label">{$key}</span>
+                            <span class="label label-badge">{$vo}</span>
+                        </a>
+                        {/volist}
+                    </div>
+                </div>
             </div>
             <div class="panel">
                 <div class="panel-heading">推荐工具 <i class="icon icon-key"></i></div>
@@ -184,10 +194,4 @@
         </div>
     </div>
 </div>
-{/block}
-{block name="script"}
-{__script__}
-<script>
-    $('#dashboard').dashboard({draggable: true});
-</script>
 {/block}

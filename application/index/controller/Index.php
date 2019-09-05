@@ -19,6 +19,7 @@ class Index extends Common
         $count = Order::where('uid',session('uid'))->count();
         $data['count'] = $count;
         $data['list'] = $list;
+        $data['paylist'] = Cache::get('paylist');
         return view('',$data);
     }
 
