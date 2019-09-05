@@ -42,6 +42,14 @@ class Index extends Common
     }
 
     /**
+     * @return mixed
+     */
+    public function pay()
+    {
+        $data['paylist'] = Cache::get('paylist');
+        return view('',$data);
+    }
+    /**
      * 科普 枢轴点
      * main-content
      */
