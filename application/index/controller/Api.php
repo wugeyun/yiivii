@@ -41,10 +41,6 @@ class Api extends Controller
             $code = 500;
             $message = '操作失败';
         }
-        //写入缓存
-        Cache::remember('paylist',function() use ($data){
-            return $data;
-        });
         return json(['code'=>$code,'message'=>$message,'data'=>$data]);
     }
 }
