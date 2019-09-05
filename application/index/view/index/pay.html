@@ -1,0 +1,9 @@
+<div class="list-group">
+    {volist name="paylist" id="vo"}
+    <a href="javascript:;" class="list-group-item" data-toggle="tooltip" data-placement="top" title="{$key}">
+        <span class="label label-primary">{:date('Y-m-d H:i:s')}</span>
+        <span class="label">{$key}</span>
+        <span class="label label-badge">{$vo}</span>
+    </a>
+    {/volist}
+</div>
