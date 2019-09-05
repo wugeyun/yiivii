@@ -17,24 +17,8 @@ class Index extends Common
     {
         $list = Order::order('id desc')->limit(15)->select();
         $count = Order::where('uid',session('uid'))->count();
-        //pay
-        $url = 'https://quotes.tickmill.com/livegraph_new/cache/small.php';
-        $ql = QueryList::get($url);
-        $str = $ql->getHtml();
-        //处理
-        $paylist = [];
-        $arr = explode("\n",$str);
-        foreach($arr as $v){
-            $a = explode(" ",$v);
-            if (count($a) == 6) {
-                $paylist[] = [
-                    $a[1] => $a[2]
-                ];
-            }
-        }
         $data['count'] = $count;
         $data['list'] = $list;
-        $data['paylist'] = $paylist;
         return view('',$data);
     }
 
@@ -57,14 +41,6 @@ class Index extends Common
         return view('',$data);
     }
 
-    /**
-     * @return mixed
-     */
-    public function pay()
-    {
-        $data['paylist'] = Cache::get('paylist');
-        return view('',$data);
-    }
     /**
      * 科普 枢轴点
      * main-content
