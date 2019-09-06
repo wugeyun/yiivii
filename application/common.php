@@ -201,3 +201,24 @@ function email_daily_footer()
 HTML;
     return $str;
 }
+
+/**
+ * 实时报价
+ * @return array
+ */
+function get_pay()
+{
+    $data = [];
+    $url = 'https://quotes.tickmill.com/livegraph_new/cache/small.php';
+    $ql = \QL\QueryList::get($url);
+    $str = $ql->getHtml();
+    //处理
+    $arr = explode("\n",$str);
+    foreach($arr as $v){
+        $a = explode(" ",$v);
+        if (count($a) == 6) {
+            $data[] = $a;
+        }
+    }
+    return $data;
+}
