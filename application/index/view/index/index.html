@@ -135,18 +135,6 @@
         </div>
         <div class="col-md-4">
             <div class="panel">
-                <div class="panel-heading">实时报价 <i class="icon icon-spin icon-spinner-snake"></i></div>
-                <div class="list-group">
-                    {volist name="paylist" id="vo"}
-                    <a href="javascript:;" class="list-group-item" data-toggle="tooltip" data-placement="top" title="{$vo.1}">
-                        <span class="label label-primary">{:date('H:i:s')}</span>
-                        <span class="label">{$vo.1}</span>
-                        <span class="label label-badge {eq name="vo.0" value="up"}label-danger{else/}label-success{/eq}">{$vo.2}</span>
-                    </a>
-                    {/volist}
-                </div>
-            </div>
-            <div class="panel">
                 <div class="panel-heading">推荐工具 <i class="icon icon-key"></i></div>
                 <div class="panel-body">
                     <button class="btn btn-block btn-{:get_color()}" type="button" data-iframe="https://tickmill.autochartist.com/to/?broker_id=520&account_type=LIVE&user=595733&token=a9f5e6296b5b780520ae4c12935bd6d4&locale=zh" data-icon="dollar" data-toggle="modal" data-size="fullscreen">
