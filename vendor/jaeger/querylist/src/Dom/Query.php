@@ -9,12 +9,16 @@ namespace QL\Dom;
 
 use Tightenco\Collect\Support\Collection;
 use phpQuery;
+use phpQueryObject;
 use QL\QueryList;
 use Closure;
 
 class Query
 {
     protected $html;
+    /**
+     * @var \phpQueryObject
+     */
     protected $document;
     protected $rules;
     protected $range = null;
@@ -31,11 +35,12 @@ class Query
     }
 
     /**
-     * @return mixed
+     * @param bool $rel
+     * @return String
      */
-    public function getHtml()
+    public function getHtml($rel = true)
     {
-        return $this->html;
+        return $rel ? $this->document->htmlOuter() : $this->html;
     }
 
     /**
@@ -46,6 +51,7 @@ class Query
     public function setHtml($html, $charset = null)
     {
         $this->html = value($html);
+        $this->destroyDocument();
         $this->document = phpQuery::newDocumentHTML($this->html,$charset);
         return $this->ql;
     }
@@ -140,59 +146,76 @@ class Query
     protected function getList()
     {
         $data = [];
-        if (!empty($this->range)) {
-            $robj = $this->document->find($this->range);
+        if (empty($this->range)) {
+            foreach ($this->rules as $key => $reg_value){
+                $rule = $this->parseRule($reg_value);
+                $contentElements = $this->document->find($rule['selector']);
+                $data[$key] = $this->extractContent($contentElements, $key, $rule);
+            }
+        } else {
+            $rangeElements  = $this->document->find($this->range);
             $i = 0;
-            foreach ($robj as $item) {
+            foreach ($rangeElements as $element) {
                 foreach ($this->rules as $key => $reg_value){
-                    $tags = $reg_value[2] ?? '';
-                    $iobj = pq($item,$this->document)->find($reg_value[0]);
-                    switch ($reg_value[1]) {
-                        case 'text':
-                            $data[$i][$key] = $this->allowTags(pq($iobj)->html(),$tags);
-                            break;
-                        case 'html':
-                            $data[$i][$key] = $this->stripTags(pq($iobj)->html(),$tags);
-                            break;
-                        default:
-                            $data[$i][$key] = pq($iobj)->attr($reg_value[1]);
-                            break;
-                    }
-
-                    if(isset($reg_value[3])){
-                        $data[$i][$key] = call_user_func($reg_value[3],$data[$i][$key],$key);
-                    }
+                    $rule = $this->parseRule($reg_value);
+                    $contentElements = pq($element)->find($rule['selector']);
+                    $data[$i][$key] = $this->extractContent($contentElements, $key, $rule);
                 }
                 $i++;
             }
-        } else {
-            foreach ($this->rules as $key => $reg_value){
-                $tags = $reg_value[2] ?? '';
-                $lobj = $this->document->find($reg_value[0]);
-                $i = 0;
-                foreach ($lobj as $item) {
-                    switch ($reg_value[1]) {
-                        case 'text':
-                            $data[$i][$key] = $this->allowTags(pq($item,$this->document)->html(),$tags);
-                            break;
-                        case 'html':
-                            $data[$i][$key] = $this->stripTags(pq($item,$this->document)->html(),$tags);
-                            break;
-                        default:
-                            $data[$i][$key] = pq($item,$this->document)->attr($reg_value[1]);
-                            break;
-                    }
-
-                    if(isset($reg_value[3])){
-                        $data[$i][$key] = call_user_func($reg_value[3],$data[$i][$key],$key);
-                    }
-
-                    $i++;
-                }
-            }
         }
-//        phpQuery::$documents = array();
+
         return collect($data);
+    }
+
+    protected function extractContent(phpQueryObject $pqObj, $ruleName, $rule)
+    {
+        switch ($rule['attr']) {
+            case 'text':
+                $content = $this->allowTags($pqObj->html(), $rule['filter_tags']);
+                break;
+            case 'texts':
+                $content = (new Elements($pqObj))->map(function(Elements $element) use($rule){
+                    return $this->allowTags($element->html(), $rule['filter_tags']);
+                })->all();
+                break;
+            case 'html':
+                $content = $this->stripTags($pqObj->html(), $rule['filter_tags']);
+                break;
+            case 'htmls':
+                $content = (new Elements($pqObj))->map(function(Elements $element) use($rule){
+                    return $this->stripTags($element->html(), $rule['filter_tags']);
+                })->all();
+                break;
+            case 'htmlOuter':
+                $content = $this->stripTags($pqObj->htmlOuter(), $rule['filter_tags']);
+                break;
+            case 'htmlOuters':
+                $content = (new Elements($pqObj))->map(function(Elements $element) use($rule){
+                    return $this->stripTags($element->htmlOuter(), $rule['filter_tags']);
+                })->all();
+                break;
+            default:
+                $content = $pqObj->attr($rule['attr']);
+                break;
+        }
+
+        if(is_callable($rule['handle_callback'])){
+            $content = call_user_func($rule['handle_callback'], $content, $ruleName);
+        }
+
+        return $content;
+    }
+
+    protected function parseRule($rule)
+    {
+        $result = [];
+        $result['selector'] = $rule[0];
+        $result['attr'] = $rule[1];
+        $result['filter_tags'] = $rule[2] ?? '';
+        $result['handle_callback'] = $rule[3] ?? null;
+
+        return $result;
     }
 
     /**
@@ -267,5 +290,17 @@ class Query
             $doc->unloadDocument();
         }
         return $html;
+    }
+
+    protected function destroyDocument()
+    {
+        if($this->document instanceof phpQueryObject) {
+            $this->document->unloadDocument();
+        }
+    }
+
+    public function __destruct()
+    {
+        $this->destroyDocument();
     }
 }
