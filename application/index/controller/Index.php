@@ -32,6 +32,15 @@ class Index extends Common
     }
 
     /**
+     * TC 策略
+     * @return mixed
+     */
+    public function tc()
+    {
+        return view('');
+    }
+
+    /**
      * 枢轴点show
      * @param $t
      * @return mixed
